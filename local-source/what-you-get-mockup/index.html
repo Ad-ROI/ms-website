@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Task Hit List — MindStream.ing</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ─── TOP NAV ─── */
+  .top-nav {
+    background: #0d0d1a;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    padding: 0 40px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo {
+    font-size: 18px;
+    font-weight: 900;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  .nav-logo span { color: #8b5cf6; }
+  .nav-links { display: flex; align-items: center; gap: 24px; }
+  .nav-link {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: #fff; }
+  .nav-cta {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    padding: 8px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+  @media (max-width: 640px) {
+    .top-nav { padding: 0 20px; }
+    .nav-links .nav-link { display: none; }
+  }
+
+  body {
+    background: #f2f3f7;
+    color: #1a1a2e;
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    padding: 90px 40px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    background: rgba(99,102,241,0.2);
+    border: 1px solid rgba(99,102,241,0.4);
+    color: #a5b4fc;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 7px 20px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+    position: relative;
+  }
+  .hero h1 {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 900;
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(90deg, #6366f1, #a78bfa, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: clamp(18px, 2.5vw, 26px);
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 40px;
+    position: relative;
+  }
+  .hero-sub strong { color: #fff; }
+
+  .value-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 100px;
+    padding: 14px 32px;
+    margin-bottom: 40px;
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .value-pill-item {
+    text-align: center;
+    padding: 0 16px;
+    border-right: 1px solid rgba(255,255,255,0.15);
+  }
+  .value-pill-item:last-child { border-right: none; }
+  .value-pill-num {
+    display: block;
+    font-size: 28px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+  }
+  .value-pill-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2px;
+  }
+
+  .passive-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(16,185,129,0.1);
+    border: 1px solid rgba(16,185,129,0.25);
+    color: #6ee7b7;
+    font-size: 13px;
+    padding: 10px 22px;
+    border-radius: 100px;
+    position: relative;
+  }
+  .pulse { width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: p 2s infinite; }
+  @keyframes p { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.5)} }
+
+  /* ─── INTRO STRIP ─── */
+  .intro-strip {
+    background: #fff;
+    border-bottom: 1px solid #e8eaef;
+    padding: 48px 40px;
+    text-align: center;
+  }
+  .intro-strip p {
+    max-width: 820px;
+    margin: 0 auto;
+    font-size: 17px;
+    color: #4b5563;
+    line-height: 1.9;
+  }
+  .intro-strip strong { color: #1a1a2e; }
+
+  /* ─── ROLES GRID ─── */
+  .roles-section {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 64px 24px;
+  }
+  .section-heading {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .section-heading h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #1a1a2e;
+    margin-bottom: 10px;
+  }
+  .section-heading p {
+    font-size: 16px;
+    color: #6b7280;
+  }
+
+  /* ─── ROLE CARD ─── */
+  .role-card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+    margin-bottom: 28px;
+    overflow: hidden;
+    border: 1px solid #eceef3;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .role-card:hover {
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+  }
+
+  .role-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 28px 36px;
+    border-left: 5px solid var(--accent);
+  }
+  .role-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--accent-bg);
+    border-radius: 6px;
+    padding: 3px 8px;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+  .role-icon {
+    width: 54px; height: 54px;
+    border-radius: 14px;
+    background: var(--accent-bg);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+    flex-shrink: 0;
+  }
+  .role-info { flex: 1; min-width: 0; }
+  .role-title {
+    font-size: 21px;
+    font-weight: 800;
+    color: #1a1a2e;
+    margin-bottom: 3px;
+  }
+  .role-subtitle { font-size: 13px; font-weight: 500; color: #6b7280; }
+  .role-meta { text-align: right; flex-shrink: 0; }
+  .role-hours {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .role-hours-unit { font-size: 13px; color: #9ca3af; }
+  .role-count { font-size: 12px; color: #9ca3af; margin-top: 3px; }
+
+  /* ─── TASK TABLE ─── */
+  .task-thead {
+    display: grid;
+    grid-template-columns: 1fr 160px;
+    padding: 10px 36px;
+    background: #f8f9fc;
+    border-top: 1px solid #eceef3;
+    border-bottom: 1px solid #eceef3;
+  }
+  .task-thead span {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #9ca3af;
+  }
+  .task-row {
+    display: grid;
+    grid-template-columns: 1fr 160px;
+    padding: 12px 36px;
+    border-bottom: 1px solid #f0f1f5;
+    align-items: center;
+    transition: background 0.15s;
+  }
+  .task-row:hover { background: #fafbff; }
+  .task-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2937;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.5;
+    flex-shrink: 0;
+  }
+  .task-time {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    text-align: right;
+  }
+  .passive-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #f0fdf4;
+    color: #16a34a;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 100px;
+    border: 1px solid #bbf7d0;
+  }
+  .passive-tag::before { content: '●'; font-size: 7px; }
+
+  /* ─── SECTION TOTAL ─── */
+  .section-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 36px;
+    background: var(--accent-bg);
+    border-top: 2px solid var(--accent);
+  }
+  .st-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .st-val {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--accent);
+  }
+
+  /* ─── POWERED BY ─── */
+  .powered-by {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 36px;
+    background: #fafbff;
+    border-top: 1px solid #eceef3;
+    flex-wrap: wrap;
+  }
+  .pb-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #9ca3af;
+  }
+  .pb-tag {
+    font-size: 12px;
+    color: #6b7280;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+
+  /* ─── GRAND TOTAL ─── */
+  .grand-wrap {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    padding: 72px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .grand-wrap::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .grand-title {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .grand-title em {
+    font-style: normal;
+    background: linear-gradient(90deg, #6366f1, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .grand-sub {
+    font-size: 18px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 56px;
+    position: relative;
+  }
+  .grand-nums {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+    position: relative;
+    max-width: 900px;
+    margin-left: auto; margin-right: auto;
+  }
+  .gn-item {
+    flex: 1;
+    min-width: 160px;
+    padding: 28px 20px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04);
+    margin: 0 1px;
+    border-radius: 4px;
+  }
+  .gn-num {
+    font-size: 48px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .gn-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  .grand-comparison {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 32px 40px;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    position: relative;
+  }
+  .gc-vs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .gc-col { text-align: center; }
+  .gc-num { font-size: 36px; font-weight: 900; color: #fff; }
+  .gc-label { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 4px; }
+  .gc-divider {
+    font-size: 28px;
+    font-weight: 900;
+    color: #6366f1;
+  }
+  .gc-note {
+    margin-top: 20px;
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+    padding: 18px 48px;
+    border-radius: 14px;
+    text-decoration: none;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 30px rgba(99,102,241,0.4);
+  }
+  .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(99,102,241,0.5); }
+
+  /* ─── ROLE THEMES ─── */
+  .r1 { --accent: #6366f1; --accent-bg: #f0f0ff; }
+  .r2 { --accent: #f59e0b; --accent-bg: #fffbeb; }
+  .r3 { --accent: #ec4899; --accent-bg: #fdf2f8; }
+  .r4 { --accent: #10b981; --accent-bg: #ecfdf5; }
+  .r5 { --accent: #3b82f6; --accent-bg: #eff6ff; }
+  .r6 { --accent: #8b5cf6; --accent-bg: #f5f3ff; }
+  .r7 { --accent: #ef4444; --accent-bg: #fef2f2; }
+  .r8 { --accent: #14b8a6; --accent-bg: #f0fdfa; }
+  .r9 { --accent: #f97316; --accent-bg: #fff7ed; }
+  .r10 { --accent: #06b6d4; --accent-bg: #ecfeff; }
+  .r11 { --accent: #84cc16; --accent-bg: #f7fee7; }
+  .r12 { --accent: #d946ef; --accent-bg: #fdf4ff; }
+  .r13 { --accent: #0ea5e9; --accent-bg: #f0f9ff; }
+  .r14 { --accent: #78716c; --accent-bg: #fafaf9; }
+  .r15 { --accent: #64748b; --accent-bg: #f8fafc; }
+  .r16 { --accent: #2563eb; --accent-bg: #eff6ff; }
+  .r17 { --accent: #7c3aed; --accent-bg: #f5f3ff; }
+  .r18 { --accent: #0d9488; --accent-bg: #f0fdfa; }
+  .r19 { --accent: #be185d; --accent-bg: #fdf2f8; }
+
+  @media (max-width: 640px) {
+    .role-header { flex-wrap: wrap; padding: 20px; gap: 12px; }
+    .task-row, .task-thead, .section-total, .powered-by { padding: 10px 20px; }
+    .value-pill { padding: 12px 16px; gap: 0; }
+    .value-pill-item { padding: 0 10px; }
+    .gn-num { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <a href="/" class="nav-logo">Mind<span>Stream</span></a>
+  <div class="nav-links">
+    <a href="/business-automation-systems/" class="nav-link">Autopilot Overview</a>
+    <a href="/" class="nav-link">Home</a>
+    <a href="https://go.mindstream.ing/demo" class="nav-cta">Book a Demo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">The Task Hit List</div>
+  <h1>The Output of <em>19 People.</em><br>The Cost of 2.</h1>
+  <p class="hero-sub">For the price of 2 okay employees at $15/hr —<br><strong>you get the equivalent of a full team that never stops working.</strong></p>
+
+  <div class="value-pill">
+    <div class="value-pill-item">
+      <span class="value-pill-num">19</span>
+      <div class="value-pill-label">Roles Covered</div>
+    </div>
+    <div class="value-pill-item">
+      <span class="value-pill-num">800+</span>
+      <div class="value-pill-label">Tasks / Week</div>
+    </div>
+    <div class="value-pill-item">
+      <span class="value-pill-num">385+</span>
+      <div class="value-pill-label">Hours Saved</div>
+    </div>
+    <div class="value-pill-item">
+      <span class="value-pill-num">24/7</span>
+      <div class="value-pill-label">Always Running</div>
+    </div>
+  </div>
+
+  <div class="passive-note">
+    <span class="pulse"></span>
+    Tasks marked PASSIVE run automatically 24/7 and are not counted in the hours total — they're on top of everything else
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="intro-strip">
+  <p>
+    What you're about to see is a <strong>partial list</strong>. Every task below shows how long it would take a real employee to do it manually, every week. Add it all up and you're looking at <strong>385+ hours of work across 19 roles.</strong><br><br>
+    But here's what the numbers don't fully show: every task marked <strong>"Passive"</strong> runs in the background 24 hours a day, 7 days a week — monitoring, alerting, syncing, responding — with zero human involvement. We didn't add those hours to the total because there are no hours to count. <strong>They just run.</strong>
+  </p>
+</div>
+
+<!-- ROLES -->
+<div class="roles-section">
+  <div class="section-heading">
+    <h2>Every Role. Every Task. All Handled.</h2>
+    <p>Scroll through and ask yourself — who on your team is doing all of this right now?</p>
+  </div>
+
+  <!-- 1. MARKETING MANAGER -->
+  <div class="role-card r1">
+    <div class="role-header">
+      <div class="role-icon">📣</div>
+      <div class="role-info">
+        <div class="role-title">Marketing Manager</div>
+        <div class="role-subtitle">Brand visibility, campaigns, content strategy, ad management, analytics</div>
+      </div>
+      <div class="role-meta">
+        <div class="role-hours">~40 hrs</div>
+        <div class="role-hours-unit">saved per week</div>
+        <div class="role-count">60+ tasks handled</div>
+      </div>
+    </div>
+    <div class="task-thead"><span>Task</span><span style="text-align:right">Avg Time</span></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Build &amp; manage a 30-day content calendar</div><div class="task-time">1 hr/month</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Run A/B tests on ad copy &amp; auto-send the winner</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate weekly paid ads performance report</div><div class="task-time">2 hrs/week</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Flag underperforming ads &amp; pause them automatically</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Monitor competitor campaigns &amp; summarize weekly</div><div class="task-time">1 hr/week</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-stop spending when budget threshold is hit</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate monthly marketing ROI report</div><div class="task-time">2 hrs/month</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Monitor brand mentions across all platforms in real-time</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Create lookalike audiences from best-converting customers</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Track and report ROAS by campaign, ad set &amp; creative</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="section-total"><div class="st-label">Marketing Manager Weekly Total</div><div class="st-val">~40 hrs/week</div></div>
+    <div class="powered-by"><span class="pb-label">Powered by</span><span class="pb-tag">Google Ads</span><span class="pb-tag">Meta Ads</span><span class="pb-tag">LinkedIn Ads</span><span class="pb-tag">Google Analytics</span><span class="pb-tag">Google Tag Manager</span><span class="pb-tag">Looker Studio</span></div>
+  </div>
+
+  <!-- 2. SOCIAL MEDIA MANAGER -->
+  <div class="role-card r2">
+    <div class="role-header">
+      <div class="role-icon">📱</div>
+      <div class="role-info">
+        <div class="role-title">Social Media Manager</div>
+        <div class="role-subtitle">Scheduling, posting, engagement, growth, community, DMs, analytics</div>
+      </div>
+      <div class="role-meta">
+        <div class="role-hours">~30 hrs</div>
+        <div class="role-hours-unit">saved per week</div>
+        <div class="role-count">55+ tasks handled</div>
+      </div>
+    </div>
+    <div class="task-thead"><span>Task</span><span style="text-align:right">Avg Time</span></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Schedule &amp; publish content across all platforms daily</div><div class="task-time">1 hr/day</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-resize images to correct dimensions per platform</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-respond to DMs with initial reply &amp; routing</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Alert when a post gets unusually high engagement</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Track follower growth rate &amp; flag drops weekly</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Monitor &amp; auto-hide inappropriate comments</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Cross-post top-performing content across platforms</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate monthly audience growth &amp; engagement report</div><div class="task-time">30 min/month</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Track which content formats drive the most website traffic</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Monitor competitor social accounts &amp; summarize monthly</div><div class="task-time">45 min/month</div></div>
+    <div class="section-total"><div class="st-label">Social Media Manager Weekly Total</div><div class="st-val">~30 hrs/week</div></div>
+    <div class="powered-by"><span class="pb-label">Powered by</span><span class="pb-tag">Instagram</span><span class="pb-tag">Facebook</span><span class="pb-tag">LinkedIn</span><span class="pb-tag">TikTok</span><span class="pb-tag">X / Twitter</span><span class="pb-tag">YouTube</span><span class="pb-tag">Pinterest</span></div>
+  </div>
+
+  <!-- 3. CONTENT MANAGER -->
+  <div class="role-card r3">
+    <div class="role-header">
+      <div class="role-icon">✍️</div>
+      <div class="role-info">
+        <div class="role-title">Content Manager</div>
+        <div class="role-subtitle">Blog, email, SEO content, repurposing, video captions, newsletters</div>
+      </div>
+      <div class="role-meta">
+        <div class="role-hours">~25 hrs</div>
+        <div class="role-hours-unit">saved per week</div>
+        <div class="role-count">50+ tasks handled</div>
+      </div>
+    </div>
+    <div class="task-thead"><span>Task</span><span style="text-align:right">Avg Time</span></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate SEO-optimized blog outlines from keyword research</div><div class="task-time">30 min/outline</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Repurpose each blog post into social, email &amp; LinkedIn</div><div class="task-time">30 min/post</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-publish posts on a scheduled content calendar</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate video titles, descriptions &amp; tags from transcript</div><div class="task-time">20 min/video</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-create a blog post from a video transcript</div><div class="task-time">30 min/video</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Monitor &amp; flag blog posts with declining rankings for refresh</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate chapter markers &amp; timestamps for videos</div><div class="task-time">15 min/video</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-send a weekly content digest to your email list</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Track content ROI (traffic, leads, conversions) monthly</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate a quarterly content audit report</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="section-total"><div class="st-label">Content Manager Weekly Total</div><div class="st-val">~25 hrs/week</div></div>
+    <div class="powered-by"><span class="pb-label">Powered by</span><span class="pb-tag">WordPress</span><span class="pb-tag">YouTube</span><span class="pb-tag">Mailchimp / Klaviyo</span><span class="pb-tag">NeuronWriter</span><span class="pb-tag">Junia AI</span><span class="pb-tag">Google Search Console</span></div>
+  </div>
+
+  <!-- 4. SEO SPECIALIST -->
+  <div class="role-card r4">
+    <div class="role-header">
+      <div class="role-icon">🔍</div>
+      <div class="role-info">
+        <div class="role-title">SEO Specialist</div>
+        <div class="role-subtitle">Rankings, technical SEO, backlinks, local SEO, audits, schema</div>
+      </div>
+      <div class="role-meta">
+        <div class="role-hours">~15 hrs</div>
+        <div class="role-hours-unit">saved per week</div>
+        <div class="role-count">45+ tasks handled</div>
+      </div>
+    </div>
+    <div class="task-thead"><span>Task</span><span style="text-align:right">Avg Time</span></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Track keyword rankings daily &amp; report weekly changes</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-generate meta titles &amp; descriptions for every new page</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Alert when a previously ranking page disappears from Google</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Run a monthly technical SEO audit &amp; summarize issues</div><div class="task-time">2 hrs/month</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Monitor Core Web Vitals &amp; alert when they drop</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Flag keyword cannibalization (two pages fighting for same keyword)</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-generate FAQ schema markup for blog posts</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Alert when a competitor outranks you for a tracked keyword</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Monitor &amp; respond to Google Business Profile weekly</div><div class="task-time">20 min/day</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate a monthly local SEO report for each service area</div><div class="task-time">30 min/month</div></div>
+    <div class="section-total"><div class="st-label">SEO Specialist Weekly Total</div><div class="st-val">~15 hrs/week</div></div>
+    <div class="powered-by"><span class="pb-label">Powered by</span><span class="pb-tag">Google Search Console</span><span class="pb-tag">SiteGuru</span><span class="pb-tag">NeuronWriter</span><span class="pb-tag">Google Business Profile</span><span class="pb-tag">Nytro SEO</span></div>
+  </div>
+
+  <!-- 5. SALES MANAGER -->
+  <div class="role-card r5">
+    <div class="role-header">
+      <div class="role-icon">💰</div>
+      <div class="role-info">
+        <div class="role-title">Sales Manager</div>
+        <div class="role-subtitle">CRM, lead nurturing, pipeline, proposals, follow-ups, closing</div>
+      </div>
+      <div class="role-meta">
+        <div class="role-hours">~35 hrs</div>
+        <div class="role-hours-unit">saved per week</div>
+        <div class="role-count">65+ tasks handled</div>
+      </div>
+    </div>
+    <div class="task-thead"><span>Task</span><span style="text-align:right">Avg Time</span></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-capture leads from every form &amp; add to correct pipeline</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Trigger personalized nurture sequence the moment a lead enters</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Score leads automatically by behavior &amp; demographics</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Alert when a hot lead visits your pricing page 2+ times</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Send a contract automatically when a deal hits proposal stage</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Alert the moment a contract is opened, viewed, or signed</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate weekly pipeline health &amp; revenue forecast report</div><div class="task-time">45 min/week</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Re-engage leads that went cold 90+ days ago automatically</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Build &amp; enrich lead lists from LinkedIn based on ideal client</div><div class="task-time">2 hrs/week</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Trigger a referral request sequence 90 days after a client starts</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="section-total"><div class="st-label">Sales Manager Weekly Total</div><div class="st-val">~35 hrs/week</div></div>
+    <div class="powered-by"><span class="pb-label">Powered by</span><span class="pb-tag">GoHighLevel / 1Dash.Pro</span><span class="pb-tag">HubSpot</span><span class="pb-tag">Salesforce</span><span class="pb-tag">LinkedIn</span><span class="pb-tag">DocuSign</span><span class="pb-tag">Stripe</span></div>
+  </div>
+
+  <!-- 6. LEAD GENERATION SPECIALIST -->
+  <div class="role-card r6">
+    <div class="role-header">
+      <div class="role-icon">🎯</div>
+      <div class="role-info">
+        <div class="role-title">Lead Generation Specialist</div>
+        <div class="role-subtitle">Outreach, prospecting, list building, qualification, cold email, LinkedIn</div>
+      </div>
+      <div class="role-meta">
+        <div class="role-hours">~20 hrs</div>
+        <div class="role-hours-unit">saved per week</div>
+        <div class="role-count">45+ tasks handled</div>
+      </div>
+    </div>
+    <div class="task-thead"><span>Task</span><span style="text-align:right">Avg Time</span></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Build &amp; enrich targeted lead lists from LinkedIn &amp; web</div><div class="task-time">2 hrs/week</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Verify email addresses before adding to any outreach sequence</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Launch personalized cold email sequences to new prospect lists</div><div class="task-time">2 hrs/campaign</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Identify companies visiting your website via reverse IP lookup</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Trigger "hot lead" alert when someone visits 3+ pages</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-qualify leads via chatbot before hitting the calendar</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Monitor competitor review sites for unhappy customers</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-send a relevant case study based on prospect's industry</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate weekly report of new leads by source &amp; quality</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Alert when a lost prospect returns to your website</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="section-total"><div class="st-label">Lead Gen Specialist Weekly Total</div><div class="st-val">~20 hrs/week</div></div>
+    <div class="powered-by"><span class="pb-label">Powered by</span><span class="pb-tag">LinkedIn</span><span class="pb-tag">GoHighLevel</span><span class="pb-tag">Chatwith</span><span class="pb-tag">ActivePieces</span><span class="pb-tag">Apollo.io</span><span class="pb-tag">Instantly</span></div>
+  </div>
+
+  <!-- 7. PROJECT MANAGER -->
+  <div class="role-card r7">
+    <div class="role-header">
+      <div class="role-icon">📋</div>
+      <div class="role-info">
+        <div class="role-title">Project Manager</div>
+        <div class="role-subtitle">Task assignment, deadlines, milestones, team accountability, delivery</div>
+      </div>
+      <div class="role-meta">
+        <div class="role-hours">~25 hrs</div>
+        <div class="role-hours-unit">saved per week</div>
+        <div class="role-count">58+ tasks handled</div>
+      </div>
+    </div>
+    <div class="task-thead"><span>Task</span><span style="text-align:right">Avg Time</span></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-create a full project from template when client signs</div><div class="task-time">30 min/project</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Assign tasks based on team workload automatically</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Send automated reminders 48 hours before every deadline</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Escalate overdue tasks to manager after X days</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate weekly status report for every active project</div><div class="task-time">1 hr/week</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Flag when a project goes over budget immediately</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Alert when a critical path task is delayed</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate "what's due this week" briefing every Monday</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Notify client automatically when a milestone is completed</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-calculate project profitability vs. original quote</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="section-total"><div class="st-label">Project Manager Weekly Total</div><div class="st-val">~25 hrs/week</div></div>
+    <div class="powered-by"><span class="pb-label">Powered by</span><span class="pb-tag">ClickUp</span><span class="pb-tag">Asana</span><span class="pb-tag">Monday.com</span><span class="pb-tag">DartAI</span><span class="pb-tag">Notion</span><span class="pb-tag">ActivePieces</span></div>
+  </div>
+
+  <!-- 8. OPERATIONS MANAGER -->
+  <div class="role-card r8">
+    <div class="role-header">
+      <div class="role-icon">⚙️</div>
+      <div class="role-info">
+        <div class="role-title">Operations Manager</div>
+        <div class="role-subtitle">Workflows, integrations, dashboards, SOPs, process automation, systems</div>
+      </div>
+      <div class="role-meta">
+        <div class="role-hours">~20 hrs</div>
+        <div class="role-hours-unit">saved per week</div>
+        <div class="role-count">52+ tasks handled</div>
+      </div>
+    </div>
+    <div class="task-thead"><span>Task</span><span style="text-align:right">Avg Time</span></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Connect any two tools that don't natively integrate</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Pull data from all platforms into one executive dashboard</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Alert when any KPI drops below a set threshold</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Monitor uptime &amp; alert within 60 seconds if site goes down</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-restart failed automations &amp; log the error</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Document all active automations in a central log monthly</div><div class="task-time">1 hr/month</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Sync data between all connected platforms every 15 minutes</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate a weekly team productivity &amp; output report</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Run automated daily site backups &amp; verify completion</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Monitor &amp; report on domain &amp; SSL certificate expiry</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="section-total"><div class="st-label">Operations Manager Weekly Total</div><div class="st-val">~20 hrs/week</div></div>
+    <div class="powered-by"><span class="pb-label">Powered by</span><span class="pb-tag">ActivePieces / Zapier</span><span class="pb-tag">Looker Studio</span><span class="pb-tag">Databox</span><span class="pb-tag">Google Analytics</span><span class="pb-tag">Slack</span><span class="pb-tag">GCP</span></div>
+  </div>
+
+  <!-- 9. EXECUTIVE ASSISTANT -->
+  <div class="role-card r9">
+    <div class="role-header">
+      <div class="role-icon">🗓️</div>
+      <div class="role-info">
+        <div class="role-title">Executive Assistant</div>
+        <div class="role-subtitle">Inbox, scheduling, documents, meeting notes, reminders, admin tasks</div>
+      </div>
+      <div class="role-meta">
+        <div class="role-hours">~20 hrs</div>
+        <div class="role-hours-unit">saved per week</div>
+        <div class="role-count">50+ tasks handled</div>
+      </div>
+    </div>
+    <div class="task-thead"><span>Task</span><span style="text-align:right">Avg Time</span></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-sort emails into folders by sender, topic &amp; urgency</div><div class="task-time">15 min/day</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Summarize long email threads into 3 bullet points</div><div class="task-time">5 min/thread</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-book discovery calls when a lead fills out a form</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Send 3-part reminder sequence before every meeting</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-generate meeting summary &amp; action items after every call</div><div class="task-time">30 min/meeting</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Push action items from meetings into project management</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate weekly agenda summary every Sunday evening</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Draft replies to common inquiries in your tone</div><div class="task-time">20 min/day</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Alert when key client email hasn't been replied to in 24 hrs</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Provision new employee accounts across all tools on day one</div><div class="task-time">45 min/hire</div></div>
+    <div class="section-total"><div class="st-label">Executive Assistant Weekly Total</div><div class="st-val">~20 hrs/week</div></div>
+    <div class="powered-by"><span class="pb-label">Powered by</span><span class="pb-tag">Gmail</span><span class="pb-tag">Outlook</span><span class="pb-tag">Google Calendar</span><span class="pb-tag">Calendly</span><span class="pb-tag">MeetGeek</span><span class="pb-tag">Zoom</span><span class="pb-tag">Google Meet</span></div>
+  </div>
+
+  <!-- 10. CUSTOMER SUCCESS -->
+  <div class="role-card r10">
+    <div class="role-header">
+      <div class="role-icon">⭐</div>
+      <div class="role-info">
+        <div class="role-title">Customer Success Manager</div>
+        <div class="role-subtitle">Onboarding, support, reviews, retention, satisfaction scores, renewals</div>
+      </div>
+      <div class="role-meta">
+        <div class="role-hours">~18 hrs</div>
+        <div class="role-hours-unit">saved per week</div>
+        <div class="role-count">52+ tasks handled</div>
+      </div>
+    </div>
+    <div class="task-thead"><span>Task</span><span style="text-align:right">Avg Time</span></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Trigger full onboarding sequence the moment contract is signed</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Send weekly progress updates to every client on autopilot</div><div class="task-time">30 min/week</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-route support tickets to the right team member</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Acknowledge every ticket within 5 minutes</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Alert immediately when a VIP client submits a ticket</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Send review request 7 days after every completed project</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Alert immediately when a 1-2 star review is posted</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Send NPS surveys at 30 days &amp; 90 days automatically</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Create renewal reminder 60 days before contract expires</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-share 5-star reviews to social media</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="section-total"><div class="st-label">Customer Success Weekly Total</div><div class="st-val">~18 hrs/week</div></div>
+    <div class="powered-by"><span class="pb-label">Powered by</span><span class="pb-tag">GoHighLevel</span><span class="pb-tag">Zendesk</span><span class="pb-tag">Google Business Profile</span><span class="pb-tag">Chatwith</span><span class="pb-tag">Typeform</span><span class="pb-tag">TruConversion</span></div>
+  </div>
+
+  <!-- 11. HR MANAGER -->
+  <div class="role-card r11">
+    <div class="role-header">
+      <div class="role-icon">👥</div>
+      <div class="role-info">
+        <div class="role-title">HR &amp; Staff Manager</div>
+        <div class="role-subtitle">Hiring, onboarding, attendance, performance, training, offboarding</div>
+      </div>
+      <div class="role-meta">
+        <div class="role-hours">~18 hrs</div>
+        <div class="role-hours-unit">saved per week</div>
+        <div class="role-count">50+ tasks handled</div>
+      </div>
+    </div>
+    <div class="task-thead"><span>Task</span><span style="text-align:right">Avg Time</span></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Post job openings to multiple job boards simultaneously</div><div class="task-time">30 min/post</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-screen resumes &amp; score against your requirements</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Schedule interviews with qualified candidates automatically</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Alert manager when employee hasn't clocked in on time</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Monitor hours &amp; flag when someone is near overtime</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate weekly productivity report by team member</div><div class="task-time">1 hr/week</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Onboard new hire — accounts, welcome sequence, training assigned</div><div class="task-time">3 hrs/hire</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Off-board employee — revoke all access, archive, final timesheet</div><div class="task-time">2 hrs/person</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Track certifications &amp; training expiry proactively</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate quarterly performance review templates pre-filled with data</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="section-total"><div class="st-label">HR &amp; Staff Manager Weekly Total</div><div class="st-val">~18 hrs/week</div></div>
+    <div class="powered-by"><span class="pb-label">Powered by</span><span class="pb-tag">TimeDoctor</span><span class="pb-tag">Desklog</span><span class="pb-tag">Google Workspace</span><span class="pb-tag">Gusto</span><span class="pb-tag">Indeed / LinkedIn Jobs</span></div>
+  </div>
+
+  <!-- 12. FINANCE -->
+  <div class="role-card r12">
+    <div class="role-header">
+      <div class="role-icon">📊</div>
+      <div class="role-info">
+        <div class="role-title">Finance &amp; Accounting</div>
+        <div class="role-subtitle">Invoicing, payroll, expenses, cash flow, reporting, reconciliation</div>
+      </div>
+      <div class="role-meta">
+        <div class="role-hours">~15 hrs</div>
+        <div class="role-hours-unit">saved per week</div>
+        <div class="role-count">48+ tasks handled</div>
+      </div>
+    </div>
+    <div class="task-thead"><span>Task</span><span style="text-align:right">Avg Time</span></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-generate &amp; send invoices when a milestone is hit</div><div class="task-time">30 min/invoice</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Send payment reminder sequence (7 days, 3 days, overdue)</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Alert immediately when a payment fails or chargeback is filed</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Categorize all transactions by vendor &amp; type automatically</div><div class="task-time">1 hr/week</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate monthly P&amp;L summary automatically</div><div class="task-time">2 hrs/month</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Alert when revenue is tracking below monthly target</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-generate payroll report at end of every pay period</div><div class="task-time">2 hrs/period</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate a 30 &amp; 60-day cash flow forecast</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Track accounts receivable aging &amp; report weekly</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate year-end financial summary automatically</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="section-total"><div class="st-label">Finance &amp; Accounting Weekly Total</div><div class="st-val">~15 hrs/week</div></div>
+    <div class="powered-by"><span class="pb-label">Powered by</span><span class="pb-tag">QuickBooks</span><span class="pb-tag">Stripe</span><span class="pb-tag">Expensify</span><span class="pb-tag">Gusto / ADP</span><span class="pb-tag">Google Sheets</span></div>
+  </div>
+
+  <!-- 13. IT / TECH -->
+  <div class="role-card r13">
+    <div class="role-header">
+      <div class="role-icon">🖥️</div>
+      <div class="role-info">
+        <div class="role-title">IT &amp; Tech Support</div>
+        <div class="role-subtitle">Hosting, security, backups, access management, tools, infrastructure</div>
+      </div>
+      <div class="role-meta">
+        <div class="role-hours">~10 hrs</div>
+        <div class="role-hours-unit">saved per week</div>
+        <div class="role-count">42+ tasks handled</div>
+      </div>
+    </div>
+    <div class="task-thead"><span>Task</span><span style="text-align:right">Avg Time</span></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Monitor domain &amp; SSL expiry — alert 60 days out</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Run automated daily site backups &amp; verify completion</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Monitor &amp; block malicious login attempts automatically</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-update plugins &amp; themes on schedule with backup first</div><div class="task-time">1 hr/month</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Alert when server CPU, storage or bandwidth hits threshold</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Revoke all tool access when an employee leaves</div><div class="task-time">30 min/person</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Monitor DNS records for unauthorized changes</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate weekly security scan &amp; uptime report</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Alert when a new device logs into any company account</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Sync business info across all directories when it changes</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="section-total"><div class="st-label">IT &amp; Tech Support Weekly Total</div><div class="st-val">~10 hrs/week</div></div>
+    <div class="powered-by"><span class="pb-label">Powered by</span><span class="pb-tag">cPanel / WHM</span><span class="pb-tag">Cloudflare</span><span class="pb-tag">WordPress</span><span class="pb-tag">Google Workspace Admin</span><span class="pb-tag">EWWW</span><span class="pb-tag">GCP</span></div>
+  </div>
+
+  <!-- 14. DATA ANALYST -->
+  <div class="role-card r14">
+    <div class="role-header">
+      <div class="role-icon">📈</div>
+      <div class="role-info">
+        <div class="role-title">Data &amp; Reporting Analyst</div>
+        <div class="role-subtitle">Dashboards, KPI tracking, client reports, anomaly detection, insights</div>
+      </div>
+      <div class="role-meta">
+        <div class="role-hours">~12 hrs</div>
+        <div class="role-hours-unit">saved per week</div>
+        <div class="role-count">40+ tasks handled</div>
+      </div>
+    </div>
+    <div class="task-thead"><span>Task</span><span style="text-align:right">Avg Time</span></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Build a live KPI dashboard pulling from all connected platforms</div><div class="task-time">Setup once</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Send Monday morning executive summary to leadership</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate monthly client performance report automatically</div><div class="task-time">3 hrs/client manually</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Alert when any tracked metric drops below threshold</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Compare this month vs. last month on every key metric</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Flag traffic drops, conversion changes or spending anomalies</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Track &amp; report revenue trend by client and service type</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate a quarterly business review report automatically</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Pull ad data from all platforms into one combined report</div><div class="task-time">1 hr/week manually</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Archive &amp; store monthly dashboard snapshots automatically</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="section-total"><div class="st-label">Data &amp; Reporting Analyst Weekly Total</div><div class="st-val">~12 hrs/week</div></div>
+    <div class="powered-by"><span class="pb-label">Powered by</span><span class="pb-tag">Looker Studio</span><span class="pb-tag">Databox</span><span class="pb-tag">Google Analytics</span><span class="pb-tag">Google Sheets</span><span class="pb-tag">TruConversion</span></div>
+  </div>
+
+  <!-- 15. COMMUNITY & REPUTATION -->
+  <div class="role-card r15">
+    <div class="role-header">
+      <div class="role-icon">🏆</div>
+      <div class="role-info">
+        <div class="role-title">Community &amp; Reputation Manager</div>
+        <div class="role-subtitle">Reviews, community management, PR, brand monitoring, referrals, events</div>
+      </div>
+      <div class="role-meta">
+        <div class="role-hours">~10 hrs</div>
+        <div class="role-hours-unit">saved per week</div>
+        <div class="role-count">45+ tasks handled</div>
+      </div>
+    </div>
+    <div class="task-thead"><span>Task</span><span style="text-align:right">Avg Time</span></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Monitor Google, Yelp &amp; Facebook for new reviews in real-time</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-respond to 5-star reviews with personalized thank you</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Alert immediately when a 1-2 star review is posted</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Welcome every new community member with a personalized message</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Monitor for spam or rule violations &amp; remove automatically</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Post weekly engagement prompts to community on schedule</div><div class="task-time">30 min/week</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Trigger referral reward notification when a referral converts</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Monitor brand mentions on Reddit, X &amp; news sites</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-send event reminders (7 days, 1 day, 1 hour before)</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate monthly reputation &amp; community health report</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="section-total"><div class="st-label">Community &amp; Reputation Weekly Total</div><div class="st-val">~10 hrs/week</div></div>
+    <div class="powered-by"><span class="pb-label">Powered by</span><span class="pb-tag">Google Business Profile</span><span class="pb-tag">Yelp</span><span class="pb-tag">Facebook Groups</span><span class="pb-tag">Discord</span><span class="pb-tag">Feedspace</span><span class="pb-tag">GoHighLevel</span></div>
+  </div>
+
+  <!-- 16. WEBSITE DESIGNER -->
+  <div class="role-card r16">
+    <div class="role-header">
+      <div class="role-icon">🌐</div>
+      <div class="role-info">
+        <div class="role-title">Website Designer</div>
+        <div class="role-subtitle">Landing pages, performance, conversion optimization, QA, updates</div>
+      </div>
+      <div class="role-meta">
+        <div class="role-hours">~20 hrs</div>
+        <div class="role-hours-unit">saved per week</div>
+        <div class="role-count">45+ tasks handled</div>
+      </div>
+    </div>
+    <div class="task-thead"><span>Task</span><span style="text-align:right">Avg Time</span></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Monitor page load speed &amp; alert when any page exceeds 3 seconds</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-compress new images on upload to stay under 100KB</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Run weekly broken link scan &amp; generate fix report</div><div class="task-time">30 min/week</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Track conversion rates by landing page &amp; flag drops weekly</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Monitor uptime &amp; alert within 60 seconds if site goes down</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Build new landing pages from approved brand templates</div><div class="task-time">2–4 hrs/page</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Track A/B test performance across landing page variants</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Update banners, promos &amp; seasonal content on schedule</div><div class="task-time">45 min/update</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Monitor Core Web Vitals &amp; generate weekly performance report</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate monthly website health, speed &amp; conversion report</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="section-total"><div class="st-label">Website Designer Weekly Total</div><div class="st-val">~20 hrs/week</div></div>
+    <div class="powered-by"><span class="pb-label">Powered by</span><span class="pb-tag">WordPress</span><span class="pb-tag">Elementor</span><span class="pb-tag">Scrollsequence</span><span class="pb-tag">TruConversion</span><span class="pb-tag">Layerpath</span><span class="pb-tag">Google PageSpeed</span></div>
+  </div>
+
+  <!-- 17. GRAPHICS DESIGNER -->
+  <div class="role-card r17">
+    <div class="role-header">
+      <div class="role-icon">🎨</div>
+      <div class="role-info">
+        <div class="role-title">Graphics Designer</div>
+        <div class="role-subtitle">Social graphics, ad creatives, brand assets, thumbnails, decks, templates</div>
+      </div>
+      <div class="role-meta">
+        <div class="role-hours">~15 hrs</div>
+        <div class="role-hours-unit">saved per week</div>
+        <div class="role-count">40+ tasks handled</div>
+      </div>
+    </div>
+    <div class="task-thead"><span>Task</span><span style="text-align:right">Avg Time</span></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-resize social graphics to exact specs per platform on every export</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate on-brand ad creative variations for A/B testing</div><div class="task-time">45 min/set</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-add brand watermark to every exported image</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate video thumbnails from a brand template for every upload</div><div class="task-time">15 min/thumbnail</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Create branded proposal cover pages &amp; pitch decks</div><div class="task-time">1 hr/deck</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Resize &amp; optimize all images for web use automatically</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Create email header graphics from campaign brief</div><div class="task-time">30 min/email</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate branded social story &amp; reel frames from templates</div><div class="task-time">20 min/set</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-generate on-brand quote graphics from testimonials</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-organize &amp; archive all brand assets in digital library</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="section-total"><div class="st-label">Graphics Designer Weekly Total</div><div class="st-val">~15 hrs/week</div></div>
+    <div class="powered-by"><span class="pb-label">Powered by</span><span class="pb-tag">Canva</span><span class="pb-tag">Adobe Express</span><span class="pb-tag">Magic Patterns</span><span class="pb-tag">ActivePieces</span><span class="pb-tag">GoHighLevel</span></div>
+  </div>
+
+  <!-- 18. BOOKKEEPER -->
+  <div class="role-card r18">
+    <div class="role-header">
+      <div class="role-icon">📒</div>
+      <div class="role-info">
+        <div class="role-title">Bookkeeper</div>
+        <div class="role-subtitle">Transaction categorization, reconciliation, P&amp;L, cash flow, expense tracking</div>
+      </div>
+      <div class="role-meta">
+        <div class="role-hours">~12 hrs</div>
+        <div class="role-hours-unit">saved per week</div>
+        <div class="role-count">40+ tasks handled</div>
+      </div>
+    </div>
+    <div class="task-thead"><span>Task</span><span style="text-align:right">Avg Time</span></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Categorize all transactions by vendor &amp; account type automatically</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Match bank transactions to invoices &amp; flag any mismatches</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Auto-generate monthly P&amp;L, balance sheet &amp; cash flow statement</div><div class="task-time">3 hrs/month</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Alert when any expense exceeds your set budget threshold</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Track all accounts payable &amp; flag invoices due within 7 days</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Reconcile Stripe, PayPal &amp; bank accounts monthly</div><div class="task-time">2 hrs/month</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Alert when revenue is tracking below monthly target</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Log every business expense from a receipt photo automatically</div><div class="task-time">10 min/receipt</div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Monitor recurring subscriptions &amp; flag ones unused for 30+ days</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate quarterly tax prep summary report automatically</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="section-total"><div class="st-label">Bookkeeper Weekly Total</div><div class="st-val">~12 hrs/week</div></div>
+    <div class="powered-by"><span class="pb-label">Powered by</span><span class="pb-tag">QuickBooks</span><span class="pb-tag">Xero</span><span class="pb-tag">Stripe</span><span class="pb-tag">Expensify</span><span class="pb-tag">Google Sheets</span><span class="pb-tag">Gusto</span></div>
+  </div>
+
+  <!-- 19. SALES FRONTER -->
+  <div class="role-card r19">
+    <div class="role-header">
+      <div class="role-icon">📞</div>
+      <div class="role-info">
+        <div class="role-title">Sales Fronter / Appointment Setter</div>
+        <div class="role-subtitle">Lead response, qualification, booking, follow-up, reactivation, pipeline feeding</div>
+      </div>
+      <div class="role-meta">
+        <div class="role-hours">~25 hrs</div>
+        <div class="role-hours-unit">saved per week</div>
+        <div class="role-count">50+ tasks handled</div>
+      </div>
+    </div>
+    <div class="task-thead"><span>Task</span><span style="text-align:right">Avg Time</span></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Respond to every inbound lead within 90 seconds via chat or SMS</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Qualify leads via AI chatbot before they ever hit your calendar</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Book discovery calls directly from conversations — zero back-and-forth</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Send 3-part reminder sequence before every booked call</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Follow up with no-shows automatically within 30 minutes</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Re-engage cold leads with a timed reactivation sequence</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Send relevant case study based on prospect's industry automatically</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Alert the sales team the moment a lead scores above threshold</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Generate daily "calls booked today" report for the team</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="task-row"><div class="task-name"><span class="dot"></span>Track show-up rate &amp; no-show rate and report weekly</div><div class="task-time"><span class="passive-tag">Passive</span></div></div>
+    <div class="section-total"><div class="st-label">Sales Fronter Weekly Total</div><div class="st-val">~25 hrs/week</div></div>
+    <div class="powered-by"><span class="pb-label">Powered by</span><span class="pb-tag">GoHighLevel / 1Dash.Pro</span><span class="pb-tag">Chatwith</span><span class="pb-tag">Calendly</span><span class="pb-tag">ActivePieces</span><span class="pb-tag">Instantly</span></div>
+  </div>
+
+  <!-- GRAND TOTAL -->
+  <div class="grand-wrap" style="border-radius: 24px; overflow: hidden; margin-top: 16px;">
+    <div class="grand-title">Your Business. <em>Running Itself.</em></div>
+    <p class="grand-sub">Here's what you're actually getting for the price of 2 employees.</p>
+
+    <div class="grand-nums">
+      <div class="gn-item"><div class="gn-num">19</div><div class="gn-label">Roles Replaced</div></div>
+      <div class="gn-item"><div class="gn-num">800+</div><div class="gn-label">Tasks / Week</div></div>
+      <div class="gn-item"><div class="gn-num">385</div><div class="gn-label">Hours / Week</div></div>
+      <div class="gn-item"><div class="gn-num">$24,900</div><div class="gn-label">Monthly Value</div></div>
+      <div class="gn-item"><div class="gn-num">24/7</div><div class="gn-label">Never Stops</div></div>
+    </div>
+
+    <div class="grand-comparison">
+      <div class="gc-vs">
+        <div class="gc-col">
+          <div class="gc-num">$5,160</div>
+          <div class="gc-label">2 employees at $15/hr × 40hrs × 4.3 weeks</div>
+        </div>
+        <div class="gc-divider">vs</div>
+        <div class="gc-col">
+          <div class="gc-num">$16,770</div>
+          <div class="gc-label">actual monthly output value of MindStream</div>
+        </div>
+      </div>
+      <div class="gc-note">
+        You get <strong style="color:#fff">3.9× more output</strong> than two full-time employees —<br>
+        and unlike employees, MindStream never calls in sick, never misses a deadline,<br>and never stops working.
+      </div>
+    </div>
+
+    <a href="https://go.mindstream.ing/demo" class="cta-btn">Book a Free Strategy Call — See What We'd Build for You →</a>
+  </div>
+
+</div>
+</body>
+</html>

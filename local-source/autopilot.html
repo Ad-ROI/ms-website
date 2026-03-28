@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Automation Systems | MindStream</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#ffffff;color:#1a1a2e;}
+.page-wrap{max-width:1200px;margin:0 auto;padding:0 24px;}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);padding:100px 24px 80px;text-align:center;}
+.hero-eyebrow{display:inline-block;background:rgba(139,92,246,0.2);border:1px solid rgba(139,92,246,0.4);color:#a78bfa;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;border-radius:100px;margin-bottom:28px;}
+.hero h1{font-size:clamp(40px,6vw,72px);font-weight:900;color:#ffffff;line-height:1.1;margin-bottom:24px;}
+.hero h1 span{background:linear-gradient(90deg,#8b5cf6,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-size:clamp(16px,2.5vw,20px);color:rgba(255,255,255,0.7);max-width:700px;margin:0 auto 48px;line-height:1.7;font-weight:400;}
+.hero-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;}
+.hero-stat{text-align:center;}
+.hero-stat-num{font-size:36px;font-weight:900;color:#ffffff;line-height:1;}
+.hero-stat-label{font-size:13px;color:rgba(255,255,255,0.5);margin-top:6px;font-weight:500;}
+
+/* Intro */
+.intro{padding:72px 24px;text-align:center;background:#ffffff;}
+.intro-inner{max-width:800px;margin:0 auto;}
+.intro h2{font-size:clamp(28px,4vw,42px);font-weight:800;color:#1a1a2e;margin-bottom:20px;line-height:1.2;}
+.intro p{font-size:18px;color:#4a4a6a;line-height:1.8;font-weight:400;}
+.intro p strong{color:#1a1a2e;font-weight:700;}
+
+/* Departments Grid */
+.departments{padding:40px 24px 100px;background:#f8f8fc;}
+.section-label{text-align:center;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#8b5cf6;margin-bottom:16px;}
+.section-title{text-align:center;font-size:clamp(28px,4vw,42px);font-weight:800;color:#1a1a2e;margin-bottom:56px;}
+.dept-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:28px;max-width:1200px;margin:0 auto;}
+
+.dept-card{background:#ffffff;border-radius:20px;padding:32px;border:1px solid #e8e8f0;transition:all 0.3s ease;position:relative;overflow:hidden;}
+.dept-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--dept-color);}
+.dept-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,0.1);border-color:transparent;}
+
+.dept-num{font-size:12px;font-weight:700;color:var(--dept-color);letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;opacity:0.8;}
+.dept-icon{width:52px;height:52px;border-radius:14px;background:var(--dept-bg);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px;}
+.dept-title{font-size:20px;font-weight:800;color:#1a1a2e;margin-bottom:12px;line-height:1.3;}
+.dept-desc{font-size:14px;color:#6b6b8a;line-height:1.7;margin-bottom:20px;font-weight:400;}
+.dept-tasks{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
+.dept-task-tag{font-size:12px;font-weight:600;color:var(--dept-color);background:var(--dept-bg);padding:5px 12px;border-radius:100px;}
+.dept-link{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--dept-color);text-decoration:none;}
+.dept-link:hover{gap:12px;}
+.dept-link svg{width:16px;height:16px;}
+
+/* Department color themes */
+.dept-1{--dept-color:#8b5cf6;--dept-bg:#f3f0ff;}
+.dept-2{--dept-color:#0ea5e9;--dept-bg:#f0f9ff;}
+.dept-3{--dept-color:#10b981;--dept-bg:#ecfdf5;}
+.dept-4{--dept-color:#f59e0b;--dept-bg:#fffbeb;}
+.dept-5{--dept-color:#ef4444;--dept-bg:#fff5f5;}
+.dept-6{--dept-color:#8b5cf6;--dept-bg:#f3f0ff;}
+.dept-7{--dept-color:#0ea5e9;--dept-bg:#f0f9ff;}
+.dept-8{--dept-color:#10b981;--dept-bg:#ecfdf5;}
+.dept-9{--dept-color:#f59e0b;--dept-bg:#fffbeb;}
+.dept-10{--dept-color:#ef4444;--dept-bg:#fff5f5;}
+.dept-11{--dept-color:#8b5cf6;--dept-bg:#f3f0ff;}
+.dept-12{--dept-color:#0ea5e9;--dept-bg:#f0f9ff;}
+.dept-13{--dept-color:#10b981;--dept-bg:#ecfdf5;}
+.dept-14{--dept-color:#f59e0b;--dept-bg:#fffbeb;}
+.dept-15{--dept-color:#ef4444;--dept-bg:#fff5f5;}
+
+/* CTA Section */
+.cta-section{background:linear-gradient(135deg,#0f0c29,#302b63);padding:100px 24px;text-align:center;}
+.cta-section h2{font-size:clamp(32px,5vw,56px);font-weight:900;color:#ffffff;margin-bottom:20px;line-height:1.1;}
+.cta-section h2 span{background:linear-gradient(90deg,#8b5cf6,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.cta-section p{font-size:18px;color:rgba(255,255,255,0.7);max-width:600px;margin:0 auto 48px;line-height:1.7;}
+.cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{display:inline-block;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#ffffff;font-size:16px;font-weight:700;padding:18px 40px;border-radius:100px;text-decoration:none;transition:all 0.3s;}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(139,92,246,0.5);}
+.btn-secondary{display:inline-block;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#ffffff;font-size:16px;font-weight:700;padding:18px 40px;border-radius:100px;text-decoration:none;transition:all 0.3s;}
+.btn-secondary:hover{background:rgba(255,255,255,0.15);}
+
+@media(max-width:768px){
+.hero-stats{gap:28px;}
+.dept-grid{grid-template-columns:1fr;}
+.cta-buttons{flex-direction:column;align-items:center;}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eyebrow">MindStream Business OS</div>
+  <h1>Every Department.<br><span>On Autopilot.</span></h1>
+  <p class="hero-sub">MindStream doesn't just automate tasks — it replaces entire departments with self-running systems. 15 departments. Zero micromanagement. Hundreds of hours back every month.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">15</div>
+      <div class="hero-stat-label">Departments Automated</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">700+</div>
+      <div class="hero-stat-label">Tasks Automated</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">313</div>
+      <div class="hero-stat-label">Hours Saved / Week</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">$20K+</div>
+      <div class="hero-stat-label">Monthly Value Delivered</div>
+    </div>
+  </div>
+</div>
+
+<div class="intro">
+  <div class="intro-inner">
+    <h2>Your business runs itself.<br>You run the vision.</h2>
+    <p>Most automation tools save you a few clicks. MindStream replaces entire job functions. <strong>Your CRM follows up on its own. Your projects manage themselves. Your content goes out without you touching it.</strong> Every department below operates as a complete, self-running system — so you can focus on growth, not operations.</p>
+  </div>
+</div>
+
+<div class="departments">
+  <div class="page-wrap">
+    <div class="section-label">All 15 Systems</div>
+    <div class="section-title">Choose Your Department. Watch It Run.</div>
+    <div class="dept-grid">
+
+      <div class="dept-card dept-1">
+        <div class="dept-num">Department 01</div>
+        <div class="dept-icon">📣</div>
+        <div class="dept-title">Your Marketing Department Runs Itself</div>
+        <div class="dept-desc">Campaigns launch, emails go out, ads optimize, and reports land in your inbox — without you scheduling a single thing.</div>
+        <div class="dept-tasks">
+          <span class="dept-task-tag">Campaign Automation</span>
+          <span class="dept-task-tag">Email Sequences</span>
+          <span class="dept-task-tag">Ad Optimization</span>
+          <span class="dept-task-tag">Lead Nurturing</span>
+        </div>
+        <a href="/business-tasks-automated" class="dept-link">See all marketing tasks <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="dept-card dept-2">
+        <div class="dept-num">Department 02</div>
+        <div class="dept-icon">📱</div>
+        <div class="dept-title">Your Social Media Department Runs Itself</div>
+        <div class="dept-desc">Content is scheduled, posted, monitored, and repurposed across every platform — 7 days a week, 24 hours a day.</div>
+        <div class="dept-tasks">
+          <span class="dept-task-tag">Auto-Scheduling</span>
+          <span class="dept-task-tag">Content Repurposing</span>
+          <span class="dept-task-tag">Engagement Tracking</span>
+          <span class="dept-task-tag">Analytics Reports</span>
+        </div>
+        <a href="/business-tasks-automated" class="dept-link">See all social tasks <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="dept-card dept-3">
+        <div class="dept-num">Department 03</div>
+        <div class="dept-icon">✍️</div>
+        <div class="dept-title">Your Content Department Runs Itself</div>
+        <div class="dept-desc">Blog posts drafted, SEO briefs generated, content calendars filled, and copy reviewed — before you even open your laptop.</div>
+        <div class="dept-tasks">
+          <span class="dept-task-tag">Blog Drafting</span>
+          <span class="dept-task-tag">SEO Briefs</span>
+          <span class="dept-task-tag">Content Calendar</span>
+          <span class="dept-task-tag">Copy Review</span>
+        </div>
+        <a href="/business-tasks-automated" class="dept-link">See all content tasks <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="dept-card dept-4">
+        <div class="dept-num">Department 04</div>
+        <div class="dept-icon">🔍</div>
+        <div class="dept-title">Your SEO Department Runs Itself</div>
+        <div class="dept-desc">Rankings tracked, technical issues flagged, backlinks monitored, and keyword opportunities surfaced automatically every week.</div>
+        <div class="dept-tasks">
+          <span class="dept-task-tag">Rank Tracking</span>
+          <span class="dept-task-tag">Technical Audits</span>
+          <span class="dept-task-tag">Backlink Monitoring</span>
+          <span class="dept-task-tag">Keyword Research</span>
+        </div>
+        <a href="/business-tasks-automated" class="dept-link">See all SEO tasks <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="dept-card dept-5">
+        <div class="dept-num">Department 05</div>
+        <div class="dept-icon">💼</div>
+        <div class="dept-title">Your Sales Department Runs Itself</div>
+        <div class="dept-desc">Your pipeline updates itself. Proposals go out automatically. Follow-ups trigger on schedule. Deals close faster with zero manual nudging.</div>
+        <div class="dept-tasks">
+          <span class="dept-task-tag">Pipeline Management</span>
+          <span class="dept-task-tag">Proposal Automation</span>
+          <span class="dept-task-tag">Follow-Up Sequences</span>
+          <span class="dept-task-tag">Deal Tracking</span>
+        </div>
+        <a href="/business-tasks-automated" class="dept-link">See all sales tasks <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="dept-card dept-6">
+        <div class="dept-num">Department 06</div>
+        <div class="dept-icon">🎯</div>
+        <div class="dept-title">Your Lead Gen Department Runs Itself</div>
+        <div class="dept-desc">Leads captured, scored, segmented, and entered into nurture sequences — before a human even knows they exist.</div>
+        <div class="dept-tasks">
+          <span class="dept-task-tag">Lead Capture</span>
+          <span class="dept-task-tag">Lead Scoring</span>
+          <span class="dept-task-tag">Segmentation</span>
+          <span class="dept-task-tag">Nurture Sequences</span>
+        </div>
+        <a href="/business-tasks-automated" class="dept-link">See all lead gen tasks <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="dept-card dept-7">
+        <div class="dept-num">Department 07</div>
+        <div class="dept-icon">📋</div>
+        <div class="dept-title">Your Project Management Runs Itself</div>
+        <div class="dept-desc">Tasks assigned, deadlines tracked, bottlenecks flagged, and client updates sent — your projects stay on track without a PM babysitting them.</div>
+        <div class="dept-tasks">
+          <span class="dept-task-tag">Task Assignment</span>
+          <span class="dept-task-tag">Deadline Tracking</span>
+          <span class="dept-task-tag">Bottleneck Alerts</span>
+          <span class="dept-task-tag">Client Updates</span>
+        </div>
+        <a href="/business-tasks-automated" class="dept-link">See all PM tasks <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="dept-card dept-8">
+        <div class="dept-num">Department 08</div>
+        <div class="dept-icon">⚙️</div>
+        <div class="dept-title">Your Operations Department Runs Itself</div>
+        <div class="dept-desc">SOPs enforced automatically. Vendor check-ins scheduled. Process bottlenecks flagged. Your operations engine never stalls.</div>
+        <div class="dept-tasks">
+          <span class="dept-task-tag">SOP Enforcement</span>
+          <span class="dept-task-tag">Vendor Management</span>
+          <span class="dept-task-tag">Process Monitoring</span>
+          <span class="dept-task-tag">Resource Planning</span>
+        </div>
+        <a href="/business-tasks-automated" class="dept-link">See all ops tasks <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="dept-card dept-9">
+        <div class="dept-num">Department 09</div>
+        <div class="dept-icon">🗓️</div>
+        <div class="dept-title">Your Executive Function Runs Itself</div>
+        <div class="dept-desc">Your calendar managed, priorities surfaced, meeting notes filed, and daily briefings ready before you start your day.</div>
+        <div class="dept-tasks">
+          <span class="dept-task-tag">Calendar Management</span>
+          <span class="dept-task-tag">Priority Surfacing</span>
+          <span class="dept-task-tag">Meeting Notes</span>
+          <span class="dept-task-tag">Daily Briefings</span>
+        </div>
+        <a href="/business-tasks-automated" class="dept-link">See all EA tasks <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="dept-card dept-10">
+        <div class="dept-num">Department 10</div>
+        <div class="dept-icon">🤝</div>
+        <div class="dept-title">Your Client Success Runs Itself</div>
+        <div class="dept-desc">Onboarding flows execute, check-in emails send, satisfaction surveys go out, and churn risks get flagged — automatically.</div>
+        <div class="dept-tasks">
+          <span class="dept-task-tag">Onboarding Flows</span>
+          <span class="dept-task-tag">Check-In Emails</span>
+          <span class="dept-task-tag">NPS Surveys</span>
+          <span class="dept-task-tag">Churn Prevention</span>
+        </div>
+        <a href="/business-tasks-automated" class="dept-link">See all CS tasks <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="dept-card dept-11">
+        <div class="dept-num">Department 11</div>
+        <div class="dept-icon">👥</div>
+        <div class="dept-title">Your HR Department Runs Itself</div>
+        <div class="dept-desc">Job postings go live, applicants screened, onboarding checklists triggered, and performance reviews scheduled — without HR lifting a finger.</div>
+        <div class="dept-tasks">
+          <span class="dept-task-tag">Job Posting</span>
+          <span class="dept-task-tag">Applicant Screening</span>
+          <span class="dept-task-tag">Onboarding</span>
+          <span class="dept-task-tag">Performance Reviews</span>
+        </div>
+        <a href="/business-tasks-automated" class="dept-link">See all HR tasks <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="dept-card dept-12">
+        <div class="dept-num">Department 12</div>
+        <div class="dept-icon">💰</div>
+        <div class="dept-title">Your Finance Department Runs Itself</div>
+        <div class="dept-desc">Invoices generated and sent, expenses categorized, P&amp;L reports delivered, and overdue payments followed up — on autopilot.</div>
+        <div class="dept-tasks">
+          <span class="dept-task-tag">Invoice Generation</span>
+          <span class="dept-task-tag">Expense Tracking</span>
+          <span class="dept-task-tag">P&amp;L Reports</span>
+          <span class="dept-task-tag">Payment Follow-Up</span>
+        </div>
+        <a href="/business-tasks-automated" class="dept-link">See all finance tasks <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="dept-card dept-13">
+        <div class="dept-num">Department 13</div>
+        <div class="dept-icon">🖥️</div>
+        <div class="dept-title">Your IT Department Runs Itself</div>
+        <div class="dept-desc">Uptime monitored, backups verified, security alerts handled, software licenses tracked, and support tickets triaged automatically.</div>
+        <div class="dept-tasks">
+          <span class="dept-task-tag">Uptime Monitoring</span>
+          <span class="dept-task-tag">Backup Verification</span>
+          <span class="dept-task-tag">Security Alerts</span>
+          <span class="dept-task-tag">Ticket Triage</span>
+        </div>
+        <a href="/business-tasks-automated" class="dept-link">See all IT tasks <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="dept-card dept-14">
+        <div class="dept-num">Department 14</div>
+        <div class="dept-icon">📊</div>
+        <div class="dept-title">Your Data &amp; Reporting Runs Itself</div>
+        <div class="dept-desc">Dashboards updated, weekly reports delivered, anomalies flagged, and KPIs tracked — your data tells you what matters before you ask.</div>
+        <div class="dept-tasks">
+          <span class="dept-task-tag">Dashboard Updates</span>
+          <span class="dept-task-tag">Weekly Reports</span>
+          <span class="dept-task-tag">Anomaly Detection</span>
+          <span class="dept-task-tag">KPI Tracking</span>
+        </div>
+        <a href="/business-tasks-automated" class="dept-link">See all data tasks <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="dept-card dept-15">
+        <div class="dept-num">Department 15</div>
+        <div class="dept-icon">⭐</div>
+        <div class="dept-title">Your Reputation Department Runs Itself</div>
+        <div class="dept-desc">Review requests sent, responses drafted, mentions monitored, and community engagement handled — your brand reputation managed 24/7.</div>
+        <div class="dept-tasks">
+          <span class="dept-task-tag">Review Requests</span>
+          <span class="dept-task-tag">Response Drafting</span>
+          <span class="dept-task-tag">Brand Monitoring</span>
+          <span class="dept-task-tag">Community Management</span>
+        </div>
+        <a href="/business-tasks-automated" class="dept-link">See all reputation tasks <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <div class="page-wrap">
+    <h2>Ready to hand your business<br><span>to a system that never sleeps?</span></h2>
+    <p>MindStream is set up once and runs forever. Book a call to see exactly which of your departments we automate first.</p>
+    <div class="cta-buttons">
+      <a href="https://go.mindstream.ing/demo" class="btn-primary">Book Your Automation Demo</a>
+      <a href="/business-tasks-automated" class="btn-secondary">See the Full Task List</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

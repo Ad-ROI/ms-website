@@ -1,0 +1,298 @@
+<section class="brain-section">
+  <div class="brain-header">
+    <div class="section-label">The Intelligence</div>
+    <h2 class="section-headline" style="color:white; font-size:52px; margin-bottom:16px;">Say It Once. <span>MISTR Handles Everything.</span></h2>
+    <p style="font-size:18px; color:rgba(255,255,255,0.5); max-width:640px; margin:0 auto; line-height:1.65;">Your voice, Slack, emails, and meetings flow into MISTR's brain. What fires out the other side: every action your business needs — automatically, instantly, without reminders.</p>
+  </div>
+  <div class="brain-svg-wrap">
+    <svg viewBox="0 0 1100 580" xmlns="http://www.w3.org/2000/svg" class="brain-svg">
+      <defs>
+        <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#1A447A" stop-opacity="0.5"/>
+          <stop offset="60%" stop-color="#0E1C43" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#0E1C43" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="redCore" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#FF000A" stop-opacity="0.2"/>
+          <stop offset="100%" stop-color="#FF000A" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="inGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#0785B7" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#0785B7" stop-opacity="0.15"/>
+        </linearGradient>
+        <linearGradient id="outRed" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#FF000A" stop-opacity="0.15"/>
+          <stop offset="100%" stop-color="#FF000A" stop-opacity="0.9"/>
+        </linearGradient>
+        <linearGradient id="outPurp" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#852FF4" stop-opacity="0.15"/>
+          <stop offset="100%" stop-color="#852FF4" stop-opacity="0.9"/>
+        </linearGradient>
+        <filter id="dotGlow" x="-200%" y="-200%" width="500%" height="500%">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="brainGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="10" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- Background glows -->
+      <ellipse cx="550" cy="290" rx="230" ry="220" fill="url(#bgGlow)"/>
+      <ellipse cx="550" cy="290" rx="165" ry="155" fill="url(#redCore)"/>
+
+      <!-- INPUT PATHS (left → brain at x=415, y=290) -->
+      <path id="p1" d="M 165,62 C 330,62 395,290 415,290" fill="none" stroke="url(#inGrad)" stroke-width="2.2" opacity="0.75"/>
+      <path id="p2" d="M 165,140 C 335,140 400,290 415,290" fill="none" stroke="url(#inGrad)" stroke-width="2.2" opacity="0.75"/>
+      <path id="p3" d="M 165,218 C 345,218 405,290 415,290" fill="none" stroke="url(#inGrad)" stroke-width="2.2" opacity="0.75"/>
+      <path id="p4" d="M 165,296 C 340,296 408,290 415,290" fill="none" stroke="url(#inGrad)" stroke-width="2.2" opacity="0.75"/>
+      <path id="p5" d="M 165,374 C 335,374 400,290 415,290" fill="none" stroke="url(#inGrad)" stroke-width="2.2" opacity="0.75"/>
+      <path id="p6" d="M 165,452 C 330,452 395,290 415,290" fill="none" stroke="url(#inGrad)" stroke-width="2.2" opacity="0.75"/>
+
+      <!-- OUTPUT PATHS — short fan rays into burst zone -->
+      <path id="q1" d="M 685,290 C 710,282 730,110 760,70" fill="none" stroke="url(#outRed)" stroke-width="2.2" opacity="0.75"/>
+      <path id="q2" d="M 685,290 C 712,287 730,210 760,190" fill="none" stroke="url(#outPurp)" stroke-width="2.2" opacity="0.75"/>
+      <path id="q3" d="M 685,290 C 714,290 735,290 760,290" fill="none" stroke="url(#outRed)" stroke-width="2.2" opacity="0.75"/>
+      <path id="q4" d="M 685,290 C 712,293 730,370 760,390" fill="none" stroke="url(#outPurp)" stroke-width="2.2" opacity="0.75"/>
+      <path id="q5" d="M 685,290 C 710,298 730,460 760,500" fill="none" stroke="url(#outRed)" stroke-width="2.2" opacity="0.75"/>
+
+      <!-- BRAIN DISC BACKGROUND -->
+      <ellipse cx="550" cy="278" rx="138" ry="126" fill="#060E2A" opacity="0.95"/>
+      <ellipse cx="550" cy="278" rx="138" ry="126" fill="none" stroke="rgba(7,133,183,0.2)" stroke-width="1.5"/>
+
+      <!-- ═══ BRAIN ICON — LEFT LOBE (cyan) ═══ -->
+      <path d="
+        M 550,175
+        C 540,167 524,163 508,167
+        C 491,171 477,183 469,198
+        C 461,212 459,228 463,243
+        C 454,247 445,255 443,267
+        C 440,280 445,293 454,300
+        C 447,311 445,324 449,337
+        C 453,352 465,362 477,367
+        C 470,377 469,389 476,398
+        C 484,407 498,410 511,407
+        C 524,404 535,396 543,386
+        C 546,389 548,391 550,393
+        Z"
+        fill="rgba(7,133,183,0.18)" stroke="#0785B7" stroke-width="2.8" stroke-linejoin="round"/>
+
+      <!-- Left lobe inner folds -->
+      <path d="M 508,167 C 512,180 511,196 504,208" fill="none" stroke="#0785B7" stroke-width="2" opacity="0.7"/>
+      <path d="M 470,199 C 464,213 463,230 469,243" fill="none" stroke="#0785B7" stroke-width="2" opacity="0.65"/>
+      <path d="M 444,268 C 452,278 455,292 450,305" fill="none" stroke="#0785B7" stroke-width="1.8" opacity="0.6"/>
+      <path d="M 449,338 C 458,330 463,342 459,354" fill="none" stroke="#0785B7" stroke-width="1.8" opacity="0.55"/>
+      <path d="M 476,367 C 484,358 488,370 484,381" fill="none" stroke="#0785B7" stroke-width="1.6" opacity="0.5"/>
+
+      <!-- ═══ BRAIN ICON — RIGHT LOBE (purple) ═══ -->
+      <path d="
+        M 550,175
+        C 560,167 576,163 592,167
+        C 609,171 623,183 631,198
+        C 639,212 641,228 637,243
+        C 646,247 655,255 657,267
+        C 660,280 655,293 646,300
+        C 653,311 655,324 651,337
+        C 647,352 635,362 623,367
+        C 630,377 631,389 624,398
+        C 616,407 602,410 589,407
+        C 576,404 565,396 557,386
+        C 554,389 552,391 550,393
+        Z"
+        fill="rgba(133,47,244,0.18)" stroke="#852FF4" stroke-width="2.8" stroke-linejoin="round"/>
+
+      <!-- Right lobe inner folds -->
+      <path d="M 592,167 C 588,180 589,196 596,208" fill="none" stroke="#852FF4" stroke-width="2" opacity="0.7"/>
+      <path d="M 630,199 C 636,213 637,230 631,243" fill="none" stroke="#852FF4" stroke-width="2" opacity="0.65"/>
+      <path d="M 656,268 C 648,278 645,292 650,305" fill="none" stroke="#852FF4" stroke-width="1.8" opacity="0.6"/>
+      <path d="M 651,338 C 642,330 637,342 641,354" fill="none" stroke="#852FF4" stroke-width="1.8" opacity="0.55"/>
+      <path d="M 624,367 C 616,358 612,370 616,381" fill="none" stroke="#852FF4" stroke-width="1.6" opacity="0.5"/>
+
+      <!-- Center dividing line -->
+      <line x1="550" y1="175" x2="550" y2="393" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+      <!-- ═══ CIRCUIT BOARD CONNECTIONS (below brain) ═══ -->
+      <!-- Main stem -->
+      <line x1="550" y1="396" x2="550" y2="424" stroke="#FF000A" stroke-width="2" opacity="0.85"/>
+      <!-- Horizontal rail -->
+      <line x1="512" y1="424" x2="588" y2="424" stroke="#FF000A" stroke-width="2" opacity="0.85"/>
+      <!-- Outer left branch -->
+      <line x1="512" y1="424" x2="512" y2="450" stroke="#FF000A" stroke-width="2" opacity="0.75"/>
+      <circle cx="512" cy="450" r="5" fill="none" stroke="#FF000A" stroke-width="2" opacity="0.85"/>
+      <!-- Inner left branch -->
+      <line x1="532" y1="424" x2="532" y2="452" stroke="#FF000A" stroke-width="2" opacity="0.75"/>
+      <circle cx="532" cy="452" r="3.5" fill="#FF000A" opacity="0.85"/>
+      <!-- Center bottom branch -->
+      <line x1="550" y1="424" x2="550" y2="455" stroke="#FF000A" stroke-width="2" opacity="0.75"/>
+      <circle cx="550" cy="455" r="5" fill="none" stroke="#FF000A" stroke-width="2" opacity="0.85"/>
+      <!-- Inner right branch -->
+      <line x1="568" y1="424" x2="568" y2="452" stroke="#FF000A" stroke-width="2" opacity="0.75"/>
+      <circle cx="568" cy="452" r="3.5" fill="#FF000A" opacity="0.85"/>
+      <!-- Outer right branch -->
+      <line x1="588" y1="424" x2="588" y2="450" stroke="#FF000A" stroke-width="2" opacity="0.75"/>
+      <circle cx="588" cy="450" r="5" fill="none" stroke="#FF000A" stroke-width="2" opacity="0.85"/>
+
+      <!-- Center pulse dot -->
+      <circle cx="550" cy="290" r="6" fill="#FF000A" filter="url(#dotGlow)"/>
+
+      <!-- Pulsing rings -->
+      <ellipse cx="550" cy="283" rx="148" ry="135" fill="none" stroke="rgba(255,0,10,0.22)" stroke-width="1.5">
+        <animate attributeName="opacity" values="0.5;0.1;0.5" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="rx" values="148;156;148" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="ry" values="135;143;135" dur="3s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="550" cy="283" rx="163" ry="149" fill="none" stroke="rgba(7,133,183,0.15)" stroke-width="1">
+        <animate attributeName="opacity" values="0.35;0.08;0.35" dur="4.2s" repeatCount="indefinite" begin="0.6s"/>
+        <animate attributeName="rx" values="163;172;163" dur="4.2s" repeatCount="indefinite" begin="0.6s"/>
+        <animate attributeName="ry" values="149;158;149" dur="4.2s" repeatCount="indefinite" begin="0.6s"/>
+      </ellipse>
+
+      <!-- MISTR label -->
+      <text x="550" y="286" text-anchor="middle" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="white" letter-spacing="3" opacity="0.9">MISTR</text>
+
+      <!-- ─── INPUT NODE BOXES ─── -->
+      <rect x="10" y="40" width="148" height="44" rx="10" fill="rgba(7,133,183,0.08)" stroke="#0785B7" stroke-width="1.5"/>
+      <text x="84" y="58" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" fill="#0785B7" font-weight="700" letter-spacing="1">INPUTS</text>
+      <text x="84" y="75" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="white">📞 Phone Calls</text>
+
+      <rect x="10" y="118" width="148" height="44" rx="10" fill="rgba(7,133,183,0.08)" stroke="#0785B7" stroke-width="1.5"/>
+      <text x="84" y="144" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="white">💬 Slack / Chat</text>
+
+      <rect x="10" y="196" width="148" height="44" rx="10" fill="rgba(7,133,183,0.08)" stroke="#0785B7" stroke-width="1.5"/>
+      <text x="84" y="222" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="white">📧 Email</text>
+
+      <rect x="10" y="274" width="148" height="44" rx="10" fill="rgba(7,133,183,0.08)" stroke="#0785B7" stroke-width="1.5"/>
+      <text x="84" y="300" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="white">📱 SMS / Text</text>
+
+      <rect x="10" y="352" width="148" height="44" rx="10" fill="rgba(7,133,183,0.08)" stroke="#0785B7" stroke-width="1.5"/>
+      <text x="84" y="378" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="white">🎤 Voice Notes</text>
+
+      <rect x="10" y="430" width="148" height="44" rx="10" fill="rgba(7,133,183,0.08)" stroke="#0785B7" stroke-width="1.5"/>
+      <text x="84" y="449" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" font-weight="600" fill="white">🎥 Zoom / Google Meet</text>
+      <text x="84" y="464" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10" fill="rgba(255,255,255,0.55)">Teams · Webex · Any call</text>
+
+      <!-- OUTPUT label -->
+      <text x="775" y="280" font-family="DM Sans, sans-serif" font-size="10" fill="#FF000A" font-weight="700" letter-spacing="1.5" opacity="0.7">ACTIONS FIRING</text>
+
+      <!-- ─── ANIMATED INPUT DOTS ─── -->
+      <circle r="5" fill="#0785B7" filter="url(#dotGlow)">
+        <animateMotion dur="2.8s" repeatCount="indefinite" begin="0s"><mpath href="#p1"/></animateMotion>
+      </circle>
+      <circle r="3.5" fill="#92C2D2" filter="url(#dotGlow)" opacity="0.8">
+        <animateMotion dur="2.8s" repeatCount="indefinite" begin="1.4s"><mpath href="#p1"/></animateMotion>
+      </circle>
+      <circle r="5" fill="#0785B7" filter="url(#dotGlow)">
+        <animateMotion dur="3.2s" repeatCount="indefinite" begin="0.4s"><mpath href="#p2"/></animateMotion>
+      </circle>
+      <circle r="3.5" fill="#0785B7" filter="url(#dotGlow)" opacity="0.7">
+        <animateMotion dur="3.2s" repeatCount="indefinite" begin="2s"><mpath href="#p2"/></animateMotion>
+      </circle>
+      <circle r="5" fill="#92C2D2" filter="url(#dotGlow)">
+        <animateMotion dur="2.5s" repeatCount="indefinite" begin="0.8s"><mpath href="#p3"/></animateMotion>
+      </circle>
+      <circle r="5" fill="#0785B7" filter="url(#dotGlow)">
+        <animateMotion dur="2s" repeatCount="indefinite" begin="0.2s"><mpath href="#p4"/></animateMotion>
+      </circle>
+      <circle r="3.5" fill="#0785B7" filter="url(#dotGlow)" opacity="0.7">
+        <animateMotion dur="2s" repeatCount="indefinite" begin="1s"><mpath href="#p4"/></animateMotion>
+      </circle>
+      <circle r="5" fill="#92C2D2" filter="url(#dotGlow)">
+        <animateMotion dur="3s" repeatCount="indefinite" begin="1.2s"><mpath href="#p5"/></animateMotion>
+      </circle>
+      <circle r="5" fill="#0785B7" filter="url(#dotGlow)">
+        <animateMotion dur="2.6s" repeatCount="indefinite" begin="0.6s"><mpath href="#p6"/></animateMotion>
+      </circle>
+      <circle r="3.5" fill="#0785B7" filter="url(#dotGlow)" opacity="0.7">
+        <animateMotion dur="2.6s" repeatCount="indefinite" begin="1.8s"><mpath href="#p6"/></animateMotion>
+      </circle>
+
+      <!-- ─── ANIMATED OUTPUT DOTS (rapid fire — actions firing) ─── -->
+      <circle r="5" fill="#FF000A" filter="url(#dotGlow)">
+        <animateMotion dur="0.9s" repeatCount="indefinite" begin="0s"><mpath href="#q1"/></animateMotion>
+      </circle>
+      <circle r="3.5" fill="#FF000A" filter="url(#dotGlow)" opacity="0.7">
+        <animateMotion dur="0.9s" repeatCount="indefinite" begin="0.45s"><mpath href="#q1"/></animateMotion>
+      </circle>
+      <circle r="5" fill="#852FF4" filter="url(#dotGlow)">
+        <animateMotion dur="1.1s" repeatCount="indefinite" begin="0.2s"><mpath href="#q2"/></animateMotion>
+      </circle>
+      <circle r="3.5" fill="#852FF4" filter="url(#dotGlow)" opacity="0.7">
+        <animateMotion dur="1.1s" repeatCount="indefinite" begin="0.8s"><mpath href="#q2"/></animateMotion>
+      </circle>
+      <circle r="5" fill="#FF000A" filter="url(#dotGlow)">
+        <animateMotion dur="0.8s" repeatCount="indefinite" begin="0.1s"><mpath href="#q3"/></animateMotion>
+      </circle>
+      <circle r="3.5" fill="#FF000A" filter="url(#dotGlow)" opacity="0.7">
+        <animateMotion dur="0.8s" repeatCount="indefinite" begin="0.55s"><mpath href="#q3"/></animateMotion>
+      </circle>
+      <circle r="5" fill="#852FF4" filter="url(#dotGlow)">
+        <animateMotion dur="1.0s" repeatCount="indefinite" begin="0.3s"><mpath href="#q4"/></animateMotion>
+      </circle>
+      <circle r="3.5" fill="#852FF4" filter="url(#dotGlow)" opacity="0.7">
+        <animateMotion dur="1.0s" repeatCount="indefinite" begin="0.75s"><mpath href="#q4"/></animateMotion>
+      </circle>
+      <circle r="5" fill="#FF000A" filter="url(#dotGlow)">
+        <animateMotion dur="0.95s" repeatCount="indefinite" begin="0.4s"><mpath href="#q5"/></animateMotion>
+      </circle>
+      <circle r="3.5" fill="#FF000A" filter="url(#dotGlow)" opacity="0.7">
+        <animateMotion dur="0.95s" repeatCount="indefinite" begin="0.85s"><mpath href="#q5"/></animateMotion>
+      </circle>
+    </svg>
+
+    <!-- TASK BURST ZONE — 50 actions firing out of brain, slow stack & fade -->
+    <div class="task-burst-zone">
+      <div class="t-pill r" style="left:1%;top:5%;--d:7s;--dl:0s">✅ Follow-up sent: Miller</div>
+      <div class="t-pill c" style="left:33%;top:2%;--d:6s;--dl:2.5s">📧 Email drafted: Sarah J.</div>
+      <div class="t-pill p" style="left:60%;top:7%;--d:9s;--dl:4s">💬 Slack: Team notified</div>
+      <div class="t-pill r" style="left:20%;top:8%;--d:6.5s;--dl:5s">✅ Contract signed</div>
+      <div class="t-pill c" style="left:50%;top:3%;--d:5s;--dl:3s">📈 ROI: +18% this week</div>
+      <div class="t-pill p" style="left:80%;top:10%;--d:8s;--dl:1s">🎯 Retargeting active</div>
+      <div class="t-pill r" style="left:10%;top:14%;--d:5.5s;--dl:1.5s">📱 Text confirmed: John</div>
+      <div class="t-pill c" style="left:42%;top:12%;--d:8.5s;--dl:4.5s">📊 Analytics pulled</div>
+      <div class="t-pill p" style="left:70%;top:18%;--d:5s;--dl:2s">🎯 Google Ad optimized</div>
+      <div class="t-pill r" style="left:3%;top:24%;--d:10s;--dl:0.5s">🌐 Landing page live</div>
+      <div class="t-pill c" style="left:28%;top:22%;--d:6.5s;--dl:3.5s">📝 Post scheduled: Tue</div>
+      <div class="t-pill p" style="left:55%;top:26%;--d:6s;--dl:1s">📞 Call logged: Davis</div>
+      <div class="t-pill r" style="left:79%;top:22%;--d:7.5s;--dl:4s">🔔 Reminder set: 3pm</div>
+      <div class="t-pill r" style="left:20%;top:28%;--d:6s;--dl:2s">📤 Deck sent: Prospect</div>
+      <div class="t-pill c" style="left:14%;top:33%;--d:5s;--dl:3s">💡 Lead scored: 94</div>
+      <div class="t-pill p" style="left:40%;top:31%;--d:9.5s;--dl:0s">🗓️ Meeting booked</div>
+      <div class="t-pill r" style="left:65%;top:36%;--d:6.5s;--dl:4.5s">📈 Report generated</div>
+      <div class="t-pill p" style="left:85%;top:32%;--d:7s;--dl:1.5s">📱 Appt reminder: 9am</div>
+      <div class="t-pill r" style="left:4%;top:42%;--d:6s;--dl:3.5s">✅ Invoice sent: $2,400</div>
+      <div class="t-pill c" style="left:32%;top:44%;--d:8s;--dl:0s">📣 Review requested</div>
+      <div class="t-pill p" style="left:58%;top:40%;--d:5.5s;--dl:2.5s">🛠️ Ticket #429 closed</div>
+      <div class="t-pill r" style="left:80%;top:45%;--d:7s;--dl:1s">🔗 CRM updated</div>
+      <div class="t-pill p" style="left:5%;top:50%;--d:5s;--dl:2s">✅ Lead: moved to close</div>
+      <div class="t-pill c" style="left:51%;top:47%;--d:7s;--dl:4s">🗓️ Follow-up: Thu 2pm</div>
+      <div class="t-pill c" style="left:17%;top:52%;--d:6.5s;--dl:3s">📤 Proposal sent</div>
+      <div class="t-pill p" style="left:44%;top:54%;--d:5s;--dl:1.5s">💬 Response: @client</div>
+      <div class="t-pill r" style="left:72%;top:50%;--d:9s;--dl:4.5s">🌟 5-star reply sent</div>
+      <div class="t-pill c" style="left:1%;top:61%;--d:6s;--dl:0.5s">✅ Task: SEO audit done</div>
+      <div class="t-pill p" style="left:30%;top:63%;--d:7.5s;--dl:2.5s">📱 SMS blast sent</div>
+      <div class="t-pill r" style="left:57%;top:59%;--d:5.5s;--dl:5s">🎤 Voicemail transcribed</div>
+      <div class="t-pill c" style="left:79%;top:64%;--d:10s;--dl:1.5s">📊 Weekly KPI report</div>
+      <div class="t-pill r" style="left:42%;top:58%;--d:9s;--dl:0s">🔗 Zapier triggered</div>
+      <div class="t-pill p" style="left:9%;top:72%;--d:6.5s;--dl:3.5s">🔄 Workflow triggered</div>
+      <div class="t-pill r" style="left:37%;top:70%;--d:6s;--dl:2s">📧 Newsletter sent</div>
+      <div class="t-pill c" style="left:64%;top:74%;--d:7s;--dl:1s">🎯 Ad creative A/B'd</div>
+      <div class="t-pill c" style="left:25%;top:68%;--d:5s;--dl:4s">📊 Ads spend: $847</div>
+      <div class="t-pill p" style="left:70%;top:68%;--d:6.5s;--dl:2s">💬 Chat replied: web</div>
+      <div class="t-pill p" style="left:2%;top:81%;--d:8.5s;--dl:3s">💰 Payment confirmed</div>
+      <div class="t-pill r" style="left:24%;top:79%;--d:5s;--dl:0.5s">✅ Onboarding: step 2</div>
+      <div class="t-pill c" style="left:51%;top:83%;--d:6.5s;--dl:4s">📞 Callback scheduled</div>
+      <div class="t-pill p" style="left:77%;top:80%;--d:5s;--dl:2.5s">🌐 Google ranking checked</div>
+      <div class="t-pill r" style="left:13%;top:76%;--d:7.5s;--dl:3.5s">📧 Re-engagement sent</div>
+      <div class="t-pill c" style="left:46%;top:77%;--d:6s;--dl:1s">🌟 Testimonial captured</div>
+      <div class="t-pill p" style="left:85%;top:56%;--d:5.5s;--dl:3s">✅ Blog published</div>
+      <div class="t-pill r" style="left:7%;top:90%;--d:7.5s;--dl:1.5s">🔔 Client alert sent</div>
+      <div class="t-pill c" style="left:34%;top:88%;--d:9.5s;--dl:4.5s">📝 Notes: Johnson call</div>
+      <div class="t-pill p" style="left:62%;top:92%;--d:6s;--dl:1s">💬 Slack: #marketing</div>
+      <div class="t-pill r" style="left:50%;top:96%;--d:6.5s;--dl:0s">📊 Dashboard refreshed</div>
+      <div class="t-pill c" style="left:85%;top:88%;--d:8s;--dl:2.5s">🎤 Meeting summary sent</div>
+      <div class="t-pill p" style="left:86%;top:76%;--d:5s;--dl:4.5s">🔄 CRM stage updated</div>
+      <div class="t-pill r" style="left:83%;top:96%;--d:7s;--dl:2s">📊 Analytics: 847 views</div>
+    </div>
+  </div>
+</section>

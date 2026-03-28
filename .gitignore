@@ -1,0 +1,10 @@
+# Secrets / credentials
+*.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude internal
+.claude/

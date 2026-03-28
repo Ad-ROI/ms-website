@@ -1,0 +1,15 @@
+﻿(async function() {
+  const content = atob('PD9waHAKLy8gUmVhZCBmaXJzdCA4MDAwIGNoYXJzIG9mIG1zLWhvbWUtdHBsLnBocCB0byBnZXQgQ1NTL3N0cnVjdHVyZQokZiA9IGZpbGVfZ2V0X2NvbnRlbnRzKCcvaG9tZS9taW5kc3RyZWFtL3B1YmxpY19odG1sL21zLWhvbWUtdHBsLnBocCcpOwplY2hvICc8cHJlPicgLiBodG1sc3BlY2lhbGNoYXJzKHN1YnN0cigkZiwgMCwgODAwMCkpIC4gJzwvcHJlPic7Cg==');
+  const params = new URLSearchParams({
+    cpanel_jsonapi_user: 'mindstream',
+    cpanel_jsonapi_apiversion: '2',
+    cpanel_jsonapi_module: 'Fileman',
+    cpanel_jsonapi_func: 'savefile',
+    dir: '/home/mindstream/public_html',
+    filename: 'ms_readhome_head.php',
+    content: content
+  });
+  const resp = await fetch('/json-api/cpanel', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: params.toString()});
+  const json = await resp.json();
+  return JSON.stringify(json.cpanelresult ? json.cpanelresult.data : json);
+})()
