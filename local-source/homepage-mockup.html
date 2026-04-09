@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MIndSTReam.ing — Your Business. Running Itself.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0E1C43;
+    --navy2: #1A447A;
+    --teal: #0785B7;
+    --teal-light: #D5EAF4;
+    --teal-mid: #EBF4F8;
+    --purple: #852FF4;
+    --purple-deep: #35227A;
+    --purple-light: #EDE8F7;
+    --red: #FF000A;
+    --red-dark: #BC2127;
+    --steel: #92C2D2;
+    --white: #FFFFFF;
+    --gray-body: #374151;
+    --gray-muted: #6B7280;
+    --gray-light: #F4F7FA;
+    --border: #E5E7EB;
+  }
+
+  body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: var(--gray-body); overflow-x: hidden; }
+  h1, h2, h3, h4, .section-headline { font-family: 'Poppins', sans-serif; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(14,28,67,0.97); backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo-mark {
+    width: 36px; height: 36px; border-radius: 9px;
+    background: linear-gradient(135deg, #0785B7 0%, #35227A 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav-logo-mark svg { width: 22px; height: 22px; }
+  .nav-wordmark { font-size: 18px; font-weight: 700; color: white; letter-spacing: -0.3px; }
+  .nav-wordmark span { color: #0785B7; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: white; }
+  .nav-cta {
+    background: var(--red); color: white; font-weight: 700; font-size: 14px;
+    padding: 10px 22px; border-radius: 8px; text-decoration: none; transition: all 0.2s;
+  }
+  .nav-cta:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--navy);
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 48px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-waves {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 50%, rgba(7,133,183,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(255,0,10,0.08) 0%, transparent 60%);
+  }
+  /* Animated wave lines */
+  .wave-line {
+    position: absolute; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(7,133,183,0.3), transparent);
+    animation: wavePulse 4s ease-in-out infinite;
+  }
+  .wave-line:nth-child(2) { top: 30%; animation-delay: 0.5s; opacity: 0.6; }
+  .wave-line:nth-child(3) { top: 50%; animation-delay: 1s; opacity: 0.4; }
+  .wave-line:nth-child(4) { top: 70%; animation-delay: 1.5s; opacity: 0.5; }
+  .wave-line:nth-child(5) { top: 85%; animation-delay: 2s; opacity: 0.3; }
+  @keyframes wavePulse {
+    0%, 100% { transform: scaleX(0.5); opacity: 0.2; }
+    50% { transform: scaleX(1); opacity: 0.6; }
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 600px; }
+  .hero-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(7,133,183,0.12); border: 1px solid rgba(7,133,183,0.3);
+    color: var(--teal); font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 6px 14px; border-radius: 100px; margin-bottom: 28px;
+  }
+  .hero-label::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); animation: blink 2s ease-in-out infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  .hero h1 {
+    font-size: 88px; font-weight: 800; line-height: 0.95; letter-spacing: -3px;
+    color: white; margin-bottom: 28px;
+  }
+  .hero h1 span { color: var(--red); display: block; }
+  .hero-sub {
+    font-size: 20px; color: rgba(255,255,255,0.65); line-height: 1.6;
+    max-width: 520px; margin-bottom: 40px;
+  }
+  .hero-sub strong { color: rgba(255,255,255,0.9); }
+  .hero-ctas { display: flex; gap: 16px; align-items: center; margin-bottom: 56px; }
+  .btn-primary {
+    background: var(--red); color: white; font-weight: 800; font-size: 16px;
+    padding: 16px 32px; border-radius: 10px; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s;
+    box-shadow: 0 4px 24px rgba(255,0,10,0.4);
+  }
+  .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,0,10,0.5); }
+  .btn-ghost {
+    border: 1.5px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.85);
+    font-weight: 600; font-size: 16px; padding: 15px 28px; border-radius: 10px;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: white; }
+
+  /* Chain reaction mockup */
+  .hero-mockup {
+    position: absolute; right: 6%; top: 50%; transform: translateY(-50%);
+    width: 460px; z-index: 2;
+  }
+  .chain {
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .chain-item {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 14px; padding: 16px 20px;
+    display: flex; align-items: center; gap: 14px;
+    backdrop-filter: blur(8px);
+    animation: chainFadeIn 0.6s ease forwards;
+    opacity: 0;
+  }
+  .chain-item:nth-child(1) { animation-delay: 0.2s; border-left: 3px solid var(--teal); }
+  .chain-item:nth-child(2) { animation-delay: 0.8s; border-left: 3px solid var(--purple); }
+  .chain-item:nth-child(3) { animation-delay: 1.4s; border-left: 3px solid var(--teal); }
+  .chain-item:nth-child(4) { animation-delay: 2.0s; border-left: 3px solid var(--teal); }
+  .chain-item:nth-child(5) { animation-delay: 2.6s; border-left: 3px solid var(--red); }
+  @keyframes chainFadeIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .chain-icon {
+    width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 18px;
+  }
+  .chain-icon.voice { background: rgba(7,133,183,0.15); }
+  .chain-icon.slack { background: rgba(133,47,244,0.2); }
+  .chain-icon.task { background: rgba(7,133,183,0.15); }
+  .chain-icon.email { background: rgba(7,133,183,0.1); }
+  .chain-icon.done { background: rgba(255,0,10,0.15); }
+  .chain-text { flex: 1; }
+  .chain-label { font-size: 11px; color: var(--teal); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
+  .chain-desc { font-size: 14px; color: rgba(255,255,255,0.8); font-weight: 500; }
+  .chain-time { font-size: 11px; color: rgba(255,255,255,0.3); }
+  .chain-connector {
+    width: 2px; height: 12px; background: linear-gradient(to bottom, var(--teal), transparent);
+    margin-left: 32px; opacity: 0.4;
+  }
+
+  /* ─── PROOF BAR ─── */
+  .proof-bar {
+    background: white; border-bottom: 1px solid var(--border);
+    padding: 32px 48px;
+    display: flex; align-items: center; justify-content: space-between; gap: 32px;
+  }
+  .proof-stats { display: flex; gap: 56px; }
+  .proof-stat { text-align: center; }
+  .proof-stat .num { font-size: 32px; font-weight: 800; color: var(--teal); letter-spacing: -1px; display: block; }
+  .proof-stat .label { font-size: 13px; color: var(--gray-muted); font-weight: 500; margin-top: 2px; }
+  .proof-logos { display: flex; align-items: center; gap: 24px; opacity: 0.4; }
+  .proof-logo { font-size: 13px; font-weight: 700; color: var(--navy); letter-spacing: -0.3px; }
+
+  /* ─── SECTION SHELL ─── */
+  section { padding: 96px 48px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--teal); margin-bottom: 16px;
+  }
+  .section-headline {
+    font-size: 52px; font-weight: 800; color: var(--navy); line-height: 1.05;
+    letter-spacing: -1.5px; margin-bottom: 20px;
+  }
+  .section-headline span { color: var(--red); }
+  .section-sub { font-size: 19px; color: var(--gray-muted); line-height: 1.6; max-width: 600px; margin-bottom: 56px; }
+  .divider {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--teal), transparent);
+    opacity: 0.25; margin: 0;
+  }
+
+  /* ─── PAIN SECTION ─── */
+  .pain-section { background: white; }
+  .pain-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
+  .pain-card {
+    background: white; border: 1px solid var(--border);
+    border-left: 4px solid var(--red);
+    border-radius: 16px; padding: 32px 28px;
+    box-shadow: 0 4px 24px rgba(255,0,10,0.06);
+    transition: all 0.25s;
+  }
+  .pain-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(255,0,10,0.12); }
+  .pain-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: var(--teal-light); display: flex; align-items: center;
+    justify-content: center; font-size: 24px; margin-bottom: 20px;
+  }
+  .pain-card h3 { font-size: 20px; font-weight: 700; color: var(--navy); line-height: 1.3; margin-bottom: 12px; }
+  .pain-card p { font-size: 15px; color: var(--gray-muted); line-height: 1.6; }
+  .pain-bottom { text-align: center; }
+  .pain-bottom p { font-size: 26px; font-weight: 800; color: var(--navy); line-height: 1.4; }
+  .pain-bottom p span { color: var(--red); }
+
+  /* ─── HOW IT WORKS ─── */
+  .how-section { background: var(--teal-mid); }
+  .how-tabs { display: flex; gap: 8px; margin-bottom: 48px; }
+  .how-tab {
+    padding: 10px 22px; border-radius: 100px; font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s; border: none;
+  }
+  .how-tab.active { background: var(--teal); color: white; }
+  .how-tab:not(.active) { background: white; color: var(--gray-body); border: 1px solid var(--border); }
+  .how-content { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .how-text h3 { font-size: 36px; font-weight: 800; color: var(--navy); margin-bottom: 16px; letter-spacing: -0.8px; }
+  .how-text p { font-size: 18px; color: var(--gray-muted); line-height: 1.7; margin-bottom: 28px; }
+  .how-points { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .how-points li {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 16px; color: var(--gray-body); font-weight: 500;
+  }
+  .how-points li::before {
+    content: '✓'; display: inline-flex; align-items: center; justify-content: center;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--teal-light); color: var(--teal); font-size: 12px; font-weight: 800;
+    flex-shrink: 0; margin-top: 1px; font-family: 'DM Sans', sans-serif;
+  }
+  .how-mockup {
+    background: var(--navy); border-radius: 20px; padding: 28px;
+    box-shadow: 0 20px 60px rgba(13,15,43,0.25);
+  }
+  .how-mockup-header {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 20px;
+    padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .how-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .how-dot.red { background: #FF5F57; }
+  .how-dot.yellow { background: #FEBC2E; }
+  .how-dot.green { background: #28C840; }
+  .how-mockup-label { font-size: 12px; color: rgba(255,255,255,0.4); font-weight: 600; letter-spacing: 0.05em; margin-left: auto; }
+  .chat-bubble {
+    border-radius: 12px; padding: 12px 16px; margin-bottom: 10px;
+    font-size: 14px; max-width: 85%;
+  }
+  .chat-bubble.user { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.8); margin-left: auto; text-align: right; border-bottom-right-radius: 4px; }
+  .chat-bubble.mistr { background: rgba(7,133,183,0.15); color: rgba(255,255,255,0.9); border-bottom-left-radius: 4px; border-left: 2px solid var(--teal); }
+  .chat-bubble.mistr .mistr-label { font-size: 10px; color: var(--teal); font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
+  .task-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(7,133,183,0.12); border: 1px solid rgba(7,133,183,0.25);
+    border-radius: 8px; padding: 6px 10px; font-size: 12px; color: var(--teal);
+    font-weight: 600; margin-top: 8px; margin-right: 4px;
+  }
+
+  /* ─── FEATURES ─── */
+  .features-section { background: white; }
+  .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .feature-card {
+    background: white; border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px;
+    transition: all 0.25s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(7,133,183,0.15);
+    border-color: rgba(7,133,183,0.3);
+  }
+  .feature-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--teal-light); display: flex; align-items: center;
+    justify-content: center; font-size: 22px; margin-bottom: 16px;
+  }
+  .feature-card h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .feature-card p { font-size: 14px; color: var(--gray-muted); line-height: 1.55; }
+
+  /* ─── STORY ─── */
+  .story-section { background: var(--teal-mid); }
+  .story-card {
+    max-width: 780px; margin: 0 auto;
+    background: white; border-radius: 20px; padding: 48px 52px;
+    border-left: 5px solid var(--red);
+    box-shadow: 0 8px 40px rgba(7,133,183,0.1);
+  }
+  .story-card .section-label { margin-bottom: 20px; }
+  .story-card h2 { font-size: 40px; font-weight: 800; color: var(--navy); margin-bottom: 20px; letter-spacing: -1px; }
+  .story-card p { font-size: 18px; color: var(--gray-body); line-height: 1.75; margin-bottom: 28px; }
+  .story-stat { display: flex; gap: 40px; margin-top: 32px; padding-top: 32px; border-top: 1px solid var(--border); }
+  .story-stat-item .n { font-size: 28px; font-weight: 800; color: var(--teal); display: block; }
+  .story-stat-item .l { font-size: 13px; color: var(--gray-muted); font-weight: 500; }
+  .story-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--red); color: white; font-weight: 700; font-size: 15px;
+    padding: 13px 26px; border-radius: 10px; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(255,0,10,0.35);
+  }
+
+  /* ─── INTEGRATIONS PREVIEW ─── */
+  .integrations-section { background: white; }
+  .integrations-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
+  .integration-tile {
+    background: white; border: 1px solid var(--border); border-radius: 12px;
+    padding: 14px 18px; display: flex; align-items: center; gap: 10px;
+    font-size: 14px; font-weight: 600; color: var(--navy);
+    transition: all 0.2s;
+  }
+  .integration-tile:hover { border-color: var(--teal); box-shadow: 0 4px 16px rgba(7,133,183,0.15); transform: translateY(-2px); }
+  .integration-tile .logo { width: 24px; height: 24px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+  .more-badge {
+    background: var(--red); color: white; font-weight: 700; font-size: 13px;
+    padding: 12px 18px; border-radius: 12px; display: inline-flex; align-items: center;
+  }
+
+  /* ─── PRICING ─── */
+  .pricing-section { background: var(--gray-light); }
+  .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  @media (max-width: 900px) { .pricing-grid { grid-template-columns: repeat(2, 1fr); } }
+  .pricing-card {
+    border-radius: 20px; padding: 36px 32px; position: relative; overflow: hidden;
+  }
+  .pricing-card.old-way {
+    background: white; border: 1px solid var(--border);
+    opacity: 0.8;
+  }
+  .pricing-card.pro {
+    background: var(--navy);
+    box-shadow: 0 8px 30px rgba(14,28,67,0.25);
+  }
+  .pricing-card.ecosystem {
+    background: var(--navy);
+    border: 2px solid var(--red);
+    box-shadow: 0 16px 60px rgba(255,0,10,0.2), 0 0 0 1px rgba(255,0,10,0.1);
+    transform: scale(1.04);
+  }
+  .pricing-card.agency {
+    background: var(--purple-light); border: 1px solid rgba(133,47,244,0.25);
+  }
+  .price-badge {
+    display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.1em; padding: 5px 12px; border-radius: 100px; margin-bottom: 20px;
+  }
+  .price-badge.red { background: #FEE2E2; color: #DC2626; }
+  .price-badge.teal { background: var(--red); color: white; }
+  .price-badge.purple { background: var(--purple); color: white; }
+  .pricing-card h3 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+  .pricing-card.old-way h3 { color: var(--navy); }
+  .pricing-card.pro h3 { color: white; }
+  .pricing-card.agency h3 { color: var(--navy); }
+  .pricing-price { font-size: 48px; font-weight: 800; letter-spacing: -2px; margin-bottom: 4px; }
+  .pricing-card.old-way .pricing-price { color: #DC2626; text-decoration: line-through; opacity: 0.6; }
+  .pricing-card.pro .pricing-price { color: var(--teal); }
+  .pricing-card.ecosystem .pricing-price { color: var(--red); }
+  .pricing-card.agency .pricing-price { color: var(--purple); }
+  .pricing-period { font-size: 14px; color: var(--gray-muted); margin-bottom: 28px; }
+  .pricing-card.pro .pricing-period { color: rgba(255,255,255,0.5); }
+  .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+  .pricing-features li { font-size: 15px; display: flex; align-items: flex-start; gap: 10px; }
+  .pricing-card.old-way .pricing-features li { color: var(--gray-muted); }
+  .pricing-card.pro .pricing-features li { color: rgba(255,255,255,0.8); }
+  .pricing-card.ecosystem .pricing-period { color: rgba(255,255,255,0.5); }
+  .pricing-card.ecosystem h3 { color: white; }
+  .pricing-card.ecosystem .pricing-features li { color: rgba(255,255,255,0.8); }
+  .pricing-card.agency .pricing-features li { color: var(--navy); }
+  .pricing-features li::before {
+    content: '✓'; width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0;
+    display: inline-flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 900;
+    margin-top: 2px;
+  }
+  .pricing-card.old-way .pricing-features li::before { background: #FEE2E2; color: #DC2626; content: '✕'; }
+  .pricing-card.pro .pricing-features li::before { background: rgba(7,133,183,0.2); color: var(--teal); }
+  .pricing-card.agency .pricing-features li::before { background: rgba(133,47,244,0.15); color: var(--purple); }
+  .pricing-btn {
+    width: 100%; padding: 14px; border-radius: 10px; font-size: 15px; font-weight: 700;
+    cursor: pointer; border: none; transition: all 0.2s;
+  }
+  .pricing-card.old-way .pricing-btn { background: var(--border); color: var(--gray-muted); cursor: default; }
+  .pricing-card.pro .pricing-btn { background: var(--red); color: white; box-shadow: 0 4px 20px rgba(255,0,10,0.4); }
+  .pricing-card.agency .pricing-btn { background: var(--purple); color: white; }
+
+  /* ─── FINAL CTA ─── */
+  .final-cta {
+    background: var(--navy); padding: 120px 48px; text-align: center; position: relative; overflow: hidden;
+  }
+  .final-cta .wave-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(7,133,183,0.1) 0%, transparent 70%);
+  }
+  .final-cta h2 { font-size: 64px; font-weight: 800; color: white; letter-spacing: -2px; margin-bottom: 16px; position: relative; font-family: 'Poppins', sans-serif; }
+  .final-cta h2 span { color: var(--red); }
+  .final-cta p { font-size: 20px; color: rgba(255,255,255,0.55); margin-bottom: 40px; position: relative; }
+  .final-cta .btn-primary { font-size: 18px; padding: 18px 40px; position: relative; }
+  .final-note { font-size: 13px; color: rgba(255,255,255,0.3); margin-top: 20px; position: relative; }
+
+  /* ─── BRAIN SECTION ─── */
+  .brain-section {
+    background: var(--navy);
+    padding: 100px 0 80px;
+    position: relative; overflow: hidden;
+  }
+  .brain-section::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(26,68,122,0.35) 0%, transparent 70%);
+  }
+  .brain-header { text-align: center; padding: 0 48px 52px; position: relative; z-index: 2; }
+  .brain-header .section-label { color: var(--teal); }
+  .brain-header h2 { color: white; font-size: 52px; margin-bottom: 16px; letter-spacing: -1.5px; }
+  .brain-header h2 span { color: var(--red); }
+  .brain-header p { font-size: 18px; color: rgba(255,255,255,0.5); max-width: 620px; margin: 0 auto; line-height: 1.65; }
+  .brain-svg-wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 2; }
+  .brain-svg { width: 100%; height: auto; display: block; }
+  .task-burst-zone {
+    position: absolute; top: 0; left: 62%; right: 0;
+    height: 100%;
+    pointer-events: none; overflow: hidden;
+  }
+  .t-pill {
+    position: absolute; white-space: nowrap;
+    background: rgba(10,18,50,0.92);
+    border-radius: 8px; padding: 5px 12px;
+    font-size: 12px; font-weight: 600; color: white;
+    font-family: 'DM Sans', sans-serif;
+    opacity: 0;
+    animation: tPop var(--d, 3s) var(--dl, 0s) infinite;
+    border: 1px solid;
+    box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  }
+  .t-pill.r { border-color: rgba(255,0,10,0.55); box-shadow: 0 0 8px rgba(255,0,10,0.2); }
+  .t-pill.p { border-color: rgba(133,47,244,0.55); box-shadow: 0 0 8px rgba(133,47,244,0.2); }
+  .t-pill.c { border-color: rgba(7,133,183,0.55); box-shadow: 0 0 8px rgba(7,133,183,0.2); }
+  @keyframes tPop {
+    0%   { opacity:0; transform: scale(0.82) translateX(-10px); }
+    8%   { opacity:1; transform: scale(1.04) translateX(0); }
+    18%  { opacity:1; transform: scale(1); }
+    72%  { opacity:0.85; transform: scale(1) translateX(3px); }
+    100% { opacity:0;  transform: scale(0.96) translateX(7px); }
+  }
+
+  /* ─── CHANNEL CARDS ─── */
+  .channels-section {
+    background: var(--navy);
+    padding: 0 0 100px;
+    position: relative;
+  }
+  .channels-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+  .channels-label { text-align: center; padding-bottom: 16px; }
+  .channels-headline { font-family: 'Poppins', sans-serif; font-size: 28px; font-weight: 800; color: white; text-align: center; margin-bottom: 8px; }
+  .channels-headline span { color: var(--red); }
+  .channels-sub { text-align: center; color: rgba(255,255,255,0.5); font-size: 15px; margin-bottom: 56px; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .channels-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    align-items: start;
+  }
+  .ch-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 28px 20px 24px;
+    position: relative;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .ch-card:hover { background: rgba(255,255,255,0.07); transform: translateY(-4px); }
+  .ch-card:nth-child(2) { margin-top: 36px; }
+  .ch-card:nth-child(4) { margin-top: 36px; }
+  .ch-card-top { width: 100%; height: 3px; border-radius: 2px; margin-bottom: 20px; }
+  .ch-card-top.teal { background: var(--teal); }
+  .ch-card-top.purple { background: var(--purple); }
+  .ch-card-top.red { background: var(--red); }
+  .ch-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+  .ch-title { font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 700; color: white; margin-bottom: 10px; }
+  .ch-body { font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.55); }
+  .ch-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 14px; }
+  .ch-tag { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 20px; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); letter-spacing: 0.3px; }
+
+  /* ─── ASK ANYTHING SECTION ─── */
+  .ask-section {
+    background: var(--navy);
+    padding: 100px 48px;
+    position: relative; overflow: hidden;
+  }
+  .ask-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(133,47,244,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .ask-section .section-inner { position: relative; z-index: 2; }
+  .ask-section .section-label { color: var(--teal); }
+  .ask-section .section-headline { color: white; margin-bottom: 16px; }
+  .ask-section .section-sub { color: rgba(255,255,255,0.6); }
+  .ask-demos {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px; margin-bottom: 36px;
+  }
+  .ask-demo {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px; padding: 24px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .ask-q {
+    background: rgba(7,133,183,0.12);
+    border: 1px solid rgba(7,133,183,0.25);
+    border-radius: 12px 12px 12px 4px;
+    padding: 12px 16px; font-size: 14px; font-weight: 600;
+    color: white; line-height: 1.5;
+  }
+  .ask-q::before { content: '💬  '; }
+  .ask-a {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 4px 12px 12px 12px;
+    padding: 14px 16px;
+  }
+  .ask-a-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--purple); margin-bottom: 8px;
+  }
+  .ask-a-label::before { content: '🤖  '; }
+  .ask-a-text { font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.75); }
+  .ask-a-text strong { color: var(--teal); }
+  .ask-note {
+    text-align: center; font-size: 15px;
+    color: rgba(255,255,255,0.35); font-style: italic;
+  }
+
+  /* ─── NO LEARNING CURVE STRIP ─── */
+  .no-learn-strip {
+    background: white;
+    padding: 80px 48px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .no-learn-header { text-align: center; margin-bottom: 56px; }
+  .no-learn-header .section-label { margin-bottom: 12px; }
+  .no-learn-header h2 { font-family: 'Poppins', sans-serif; font-size: 40px; font-weight: 800; color: var(--navy); line-height: 1.15; margin-bottom: 16px; }
+  .no-learn-header h2 span { color: var(--red); }
+  .no-learn-header p { font-size: 18px; color: var(--gray-muted); line-height: 1.6; max-width: 620px; margin: 0 auto; }
+  .no-learn-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .no-learn-item {
+    display: flex; gap: 20px; align-items: flex-start;
+    padding: 28px; border-radius: 16px;
+    background: var(--gray-light); border: 1px solid var(--border);
+  }
+  .no-learn-icon { font-size: 36px; flex-shrink: 0; line-height: 1; }
+  .no-learn-item h4 {
+    font-family: 'Poppins', sans-serif; font-size: 16px;
+    font-weight: 700; color: var(--navy); margin-bottom: 10px; line-height: 1.3;
+  }
+  .no-learn-item p { font-size: 14px; line-height: 1.7; color: var(--gray-muted); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #060E22; padding: 56px 48px 32px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-brand .nav-wordmark { font-size: 20px; margin-bottom: 12px; display: block; }
+  .footer-brand p { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+  .footer-col h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+  .footer-col a { display: block; font-size: 14px; color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--teal); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.25); }
+  .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; margin-left: 20px; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 14 C3 6, 5 2, 7 8 C9 14, 11 4, 13 8 C15 12, 17 6, 19 10" stroke="url(#g1)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <circle cx="20" cy="10" r="2" fill="#FF000A"/>
+        <defs><linearGradient id="g1" x1="1" y1="8" x2="19" y2="8"><stop stop-color="white"/><stop offset="0.6" stop-color="#92C2D2"/><stop offset="1" stop-color="#0785B7"/></linearGradient></defs>
+      </svg>
+    </div>
+    <span class="nav-wordmark">M<span>I</span>nd<span>STR</span>eam.ing</span>
+  </a>
+  <div class="nav-links">
+    <a href="#">How It Works</a>
+    <a href="#">Features</a>
+    <a href="#">Integrations</a>
+    <a href="#">Industries</a>
+    <a href="#">Pricing</a>
+    <a href="#">About</a>
+  </div>
+  <a href="#" class="nav-cta">Talk to MISTR →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-waves">
+    <div class="wave-line"></div>
+    <div class="wave-line"></div>
+    <div class="wave-line"></div>
+    <div class="wave-line"></div>
+    <div class="wave-line"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-label">Hey MISTR — Just Talk.</div>
+    <h1>Your Business.<span>Running Itself.</span></h1>
+    <p class="hero-sub">No prompts. No learning curve. No AI training required. Just talk to <strong>MISTR</strong> the way you'd talk to a person — in any language — and watch your entire business run itself.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn-primary">Talk to MISTR →</a>
+      <a href="#" class="btn-ghost">See How It Works</a>
+    </div>
+  </div>
+  <div class="hero-mockup">
+    <div class="chain">
+      <div class="chain-item">
+        <div class="chain-icon voice">📞</div>
+        <div class="chain-text">
+          <div class="chain-label">Voice Call</div>
+          <div class="chain-desc">"Hey MISTR, follow up with the Johnson account today"</div>
+        </div>
+        <div class="chain-time">Now</div>
+      </div>
+      <div class="chain-connector"></div>
+      <div class="chain-item">
+        <div class="chain-icon slack">💬</div>
+        <div class="chain-text">
+          <div class="chain-label">Slack</div>
+          <div class="chain-desc">MISTR → #team: "Following up with Johnson today — I'll handle it."</div>
+        </div>
+        <div class="chain-time">0:03</div>
+      </div>
+      <div class="chain-connector"></div>
+      <div class="chain-item">
+        <div class="chain-icon task">✅</div>
+        <div class="chain-text">
+          <div class="chain-label">Task Created</div>
+          <div class="chain-desc">Johnson Account Follow-Up → assigned → deadline set</div>
+        </div>
+        <div class="chain-time">0:04</div>
+      </div>
+      <div class="chain-connector"></div>
+      <div class="chain-item">
+        <div class="chain-icon email">📧</div>
+        <div class="chain-text">
+          <div class="chain-label">Email Sent</div>
+          <div class="chain-desc">"Hi Sarah, just checking in on our proposal from last week..."</div>
+        </div>
+        <div class="chain-time">0:07</div>
+      </div>
+      <div class="chain-connector"></div>
+      <div class="chain-item">
+        <div class="chain-icon done">🎯</div>
+        <div class="chain-text">
+          <div class="chain-label">Done</div>
+          <div class="chain-desc">Johnson replied. Meeting booked. You didn't lift a finger.</div>
+        </div>
+        <div class="chain-time">2:14</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-stats">
+    <div class="proof-stat">
+      <span class="num">10,000+</span>
+      <span class="label">Hours Returned to Founders</span>
+    </div>
+    <div class="proof-stat">
+      <span class="num">Zero</span>
+      <span class="label">Things Forgotten</span>
+    </div>
+    <div class="proof-stat">
+      <span class="num">284K+</span>
+      <span class="label">Decisions Automated</span>
+    </div>
+    <div class="proof-stat">
+      <span class="num">98%</span>
+      <span class="label">Task Completion Rate</span>
+    </div>
+  </div>
+  <div class="proof-logos">
+    <span class="proof-logo">Slack</span>
+    <span class="proof-logo">Gmail</span>
+    <span class="proof-logo">GoHighLevel</span>
+    <span class="proof-logo">Shopify</span>
+    <span class="proof-logo">QuickBooks</span>
+    <span class="proof-logo">+80 more</span>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PAIN SECTION -->
+<section class="pain-section">
+  <div class="section-inner">
+    <div class="section-label">The Problem</div>
+    <h2 class="section-headline">Does This Sound <span>Like You?</span></h2>
+    <div class="pain-cards">
+      <div class="pain-card">
+        <div class="pain-icon">🧠</div>
+        <h3>You had a brilliant idea at 2am. By morning, it was gone.</h3>
+        <p>Your mind never stops — but your systems can't keep up. Great ideas disappear before they become action.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">📢</div>
+        <h3>You told your team something important. Three weeks later, nothing happened.</h3>
+        <p>You've said it once, twice, three times. The follow-up falls on you. Again. Always you.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">⏰</div>
+        <h3>You're working 60-hour weeks. The business still can't run without you.</h3>
+        <p>You built something great — but you became the bottleneck. The business runs on your attention, and your attention is finite.</p>
+      </div>
+    </div>
+    <div class="pain-bottom">
+      <p>That's not a discipline problem. That's a <span>systems problem.</span><br>MIndSTReam.ing fixes it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MISTR BRAIN SECTION -->
+<section class="brain-section">
+  <div class="brain-header">
+    <div class="section-label">The Intelligence</div>
+    <h2 class="section-headline" style="color:white; font-size:52px; margin-bottom:16px;">Say It Once. <span>MISTR Handles Everything.</span></h2>
+    <p style="font-size:18px; color:rgba(255,255,255,0.5); max-width:640px; margin:0 auto; line-height:1.65;">Your voice, Slack, emails, and meetings flow into MISTR's brain. What fires out the other side: every action your business needs — automatically, instantly, without reminders.</p>
+  </div>
+  <div class="brain-svg-wrap">
+    <svg viewBox="0 0 1100 580" xmlns="http://www.w3.org/2000/svg" class="brain-svg">
+      <defs>
+        <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#1A447A" stop-opacity="0.5"/>
+          <stop offset="60%" stop-color="#0E1C43" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#0E1C43" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="redCore" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#FF000A" stop-opacity="0.2"/>
+          <stop offset="100%" stop-color="#FF000A" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="inGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#0785B7" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#0785B7" stop-opacity="0.15"/>
+        </linearGradient>
+        <linearGradient id="outRed" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#FF000A" stop-opacity="0.15"/>
+          <stop offset="100%" stop-color="#FF000A" stop-opacity="0.9"/>
+        </linearGradient>
+        <linearGradient id="outPurp" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#852FF4" stop-opacity="0.15"/>
+          <stop offset="100%" stop-color="#852FF4" stop-opacity="0.9"/>
+        </linearGradient>
+        <filter id="dotGlow" x="-200%" y="-200%" width="500%" height="500%">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="brainGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="10" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- Background glows -->
+      <ellipse cx="550" cy="290" rx="230" ry="220" fill="url(#bgGlow)"/>
+      <ellipse cx="550" cy="290" rx="165" ry="155" fill="url(#redCore)"/>
+
+      <!-- INPUT PATHS (left → brain at x=415, y=290) -->
+      <path id="p1" d="M 165,62 C 330,62 395,290 415,290" fill="none" stroke="url(#inGrad)" stroke-width="2.2" opacity="0.75"/>
+      <path id="p2" d="M 165,140 C 335,140 400,290 415,290" fill="none" stroke="url(#inGrad)" stroke-width="2.2" opacity="0.75"/>
+      <path id="p3" d="M 165,218 C 345,218 405,290 415,290" fill="none" stroke="url(#inGrad)" stroke-width="2.2" opacity="0.75"/>
+      <path id="p4" d="M 165,296 C 340,296 408,290 415,290" fill="none" stroke="url(#inGrad)" stroke-width="2.2" opacity="0.75"/>
+      <path id="p5" d="M 165,374 C 335,374 400,290 415,290" fill="none" stroke="url(#inGrad)" stroke-width="2.2" opacity="0.75"/>
+      <path id="p6" d="M 165,452 C 330,452 395,290 415,290" fill="none" stroke="url(#inGrad)" stroke-width="2.2" opacity="0.75"/>
+
+      <!-- OUTPUT PATHS — short fan rays into burst zone -->
+      <path id="q1" d="M 685,290 C 710,282 730,110 760,70" fill="none" stroke="url(#outRed)" stroke-width="2.2" opacity="0.75"/>
+      <path id="q2" d="M 685,290 C 712,287 730,210 760,190" fill="none" stroke="url(#outPurp)" stroke-width="2.2" opacity="0.75"/>
+      <path id="q3" d="M 685,290 C 714,290 735,290 760,290" fill="none" stroke="url(#outRed)" stroke-width="2.2" opacity="0.75"/>
+      <path id="q4" d="M 685,290 C 712,293 730,370 760,390" fill="none" stroke="url(#outPurp)" stroke-width="2.2" opacity="0.75"/>
+      <path id="q5" d="M 685,290 C 710,298 730,460 760,500" fill="none" stroke="url(#outRed)" stroke-width="2.2" opacity="0.75"/>
+
+      <!-- BRAIN DISC BACKGROUND -->
+      <ellipse cx="550" cy="278" rx="138" ry="126" fill="#060E2A" opacity="0.95"/>
+      <ellipse cx="550" cy="278" rx="138" ry="126" fill="none" stroke="rgba(7,133,183,0.2)" stroke-width="1.5"/>
+
+      <!-- ═══ BRAIN ICON — LEFT LOBE (cyan) ═══ -->
+      <path d="
+        M 550,175
+        C 540,167 524,163 508,167
+        C 491,171 477,183 469,198
+        C 461,212 459,228 463,243
+        C 454,247 445,255 443,267
+        C 440,280 445,293 454,300
+        C 447,311 445,324 449,337
+        C 453,352 465,362 477,367
+        C 470,377 469,389 476,398
+        C 484,407 498,410 511,407
+        C 524,404 535,396 543,386
+        C 546,389 548,391 550,393
+        Z"
+        fill="rgba(7,133,183,0.18)" stroke="#0785B7" stroke-width="2.8" stroke-linejoin="round"/>
+
+      <!-- Left lobe inner folds -->
+      <path d="M 508,167 C 512,180 511,196 504,208" fill="none" stroke="#0785B7" stroke-width="2" opacity="0.7"/>
+      <path d="M 470,199 C 464,213 463,230 469,243" fill="none" stroke="#0785B7" stroke-width="2" opacity="0.65"/>
+      <path d="M 444,268 C 452,278 455,292 450,305" fill="none" stroke="#0785B7" stroke-width="1.8" opacity="0.6"/>
+      <path d="M 449,338 C 458,330 463,342 459,354" fill="none" stroke="#0785B7" stroke-width="1.8" opacity="0.55"/>
+      <path d="M 476,367 C 484,358 488,370 484,381" fill="none" stroke="#0785B7" stroke-width="1.6" opacity="0.5"/>
+
+      <!-- ═══ BRAIN ICON — RIGHT LOBE (purple) ═══ -->
+      <path d="
+        M 550,175
+        C 560,167 576,163 592,167
+        C 609,171 623,183 631,198
+        C 639,212 641,228 637,243
+        C 646,247 655,255 657,267
+        C 660,280 655,293 646,300
+        C 653,311 655,324 651,337
+        C 647,352 635,362 623,367
+        C 630,377 631,389 624,398
+        C 616,407 602,410 589,407
+        C 576,404 565,396 557,386
+        C 554,389 552,391 550,393
+        Z"
+        fill="rgba(133,47,244,0.18)" stroke="#852FF4" stroke-width="2.8" stroke-linejoin="round"/>
+
+      <!-- Right lobe inner folds -->
+      <path d="M 592,167 C 588,180 589,196 596,208" fill="none" stroke="#852FF4" stroke-width="2" opacity="0.7"/>
+      <path d="M 630,199 C 636,213 637,230 631,243" fill="none" stroke="#852FF4" stroke-width="2" opacity="0.65"/>
+      <path d="M 656,268 C 648,278 645,292 650,305" fill="none" stroke="#852FF4" stroke-width="1.8" opacity="0.6"/>
+      <path d="M 651,338 C 642,330 637,342 641,354" fill="none" stroke="#852FF4" stroke-width="1.8" opacity="0.55"/>
+      <path d="M 624,367 C 616,358 612,370 616,381" fill="none" stroke="#852FF4" stroke-width="1.6" opacity="0.5"/>
+
+      <!-- Center dividing line -->
+      <line x1="550" y1="175" x2="550" y2="393" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+      <!-- ═══ CIRCUIT BOARD CONNECTIONS (below brain) ═══ -->
+      <!-- Main stem -->
+      <line x1="550" y1="396" x2="550" y2="424" stroke="#FF000A" stroke-width="2" opacity="0.85"/>
+      <!-- Horizontal rail -->
+      <line x1="512" y1="424" x2="588" y2="424" stroke="#FF000A" stroke-width="2" opacity="0.85"/>
+      <!-- Outer left branch -->
+      <line x1="512" y1="424" x2="512" y2="450" stroke="#FF000A" stroke-width="2" opacity="0.75"/>
+      <circle cx="512" cy="450" r="5" fill="none" stroke="#FF000A" stroke-width="2" opacity="0.85"/>
+      <!-- Inner left branch -->
+      <line x1="532" y1="424" x2="532" y2="452" stroke="#FF000A" stroke-width="2" opacity="0.75"/>
+      <circle cx="532" cy="452" r="3.5" fill="#FF000A" opacity="0.85"/>
+      <!-- Center bottom branch -->
+      <line x1="550" y1="424" x2="550" y2="455" stroke="#FF000A" stroke-width="2" opacity="0.75"/>
+      <circle cx="550" cy="455" r="5" fill="none" stroke="#FF000A" stroke-width="2" opacity="0.85"/>
+      <!-- Inner right branch -->
+      <line x1="568" y1="424" x2="568" y2="452" stroke="#FF000A" stroke-width="2" opacity="0.75"/>
+      <circle cx="568" cy="452" r="3.5" fill="#FF000A" opacity="0.85"/>
+      <!-- Outer right branch -->
+      <line x1="588" y1="424" x2="588" y2="450" stroke="#FF000A" stroke-width="2" opacity="0.75"/>
+      <circle cx="588" cy="450" r="5" fill="none" stroke="#FF000A" stroke-width="2" opacity="0.85"/>
+
+      <!-- Center pulse dot -->
+      <circle cx="550" cy="290" r="6" fill="#FF000A" filter="url(#dotGlow)"/>
+
+      <!-- Pulsing rings -->
+      <ellipse cx="550" cy="283" rx="148" ry="135" fill="none" stroke="rgba(255,0,10,0.22)" stroke-width="1.5">
+        <animate attributeName="opacity" values="0.5;0.1;0.5" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="rx" values="148;156;148" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="ry" values="135;143;135" dur="3s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="550" cy="283" rx="163" ry="149" fill="none" stroke="rgba(7,133,183,0.15)" stroke-width="1">
+        <animate attributeName="opacity" values="0.35;0.08;0.35" dur="4.2s" repeatCount="indefinite" begin="0.6s"/>
+        <animate attributeName="rx" values="163;172;163" dur="4.2s" repeatCount="indefinite" begin="0.6s"/>
+        <animate attributeName="ry" values="149;158;149" dur="4.2s" repeatCount="indefinite" begin="0.6s"/>
+      </ellipse>
+
+      <!-- MISTR label -->
+      <text x="550" y="286" text-anchor="middle" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="white" letter-spacing="3" opacity="0.9">MISTR</text>
+
+      <!-- ─── INPUT NODE BOXES ─── -->
+      <rect x="10" y="40" width="148" height="44" rx="10" fill="rgba(7,133,183,0.08)" stroke="#0785B7" stroke-width="1.5"/>
+      <text x="84" y="58" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" fill="#0785B7" font-weight="700" letter-spacing="1">INPUTS</text>
+      <text x="84" y="75" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="white">📞 Phone Calls</text>
+
+      <rect x="10" y="118" width="148" height="44" rx="10" fill="rgba(7,133,183,0.08)" stroke="#0785B7" stroke-width="1.5"/>
+      <text x="84" y="144" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="white">💬 Slack / Chat</text>
+
+      <rect x="10" y="196" width="148" height="44" rx="10" fill="rgba(7,133,183,0.08)" stroke="#0785B7" stroke-width="1.5"/>
+      <text x="84" y="222" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="white">📧 Email</text>
+
+      <rect x="10" y="274" width="148" height="44" rx="10" fill="rgba(7,133,183,0.08)" stroke="#0785B7" stroke-width="1.5"/>
+      <text x="84" y="300" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="white">📱 SMS / Text</text>
+
+      <rect x="10" y="352" width="148" height="44" rx="10" fill="rgba(7,133,183,0.08)" stroke="#0785B7" stroke-width="1.5"/>
+      <text x="84" y="378" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="white">🎤 Voice Notes</text>
+
+      <rect x="10" y="430" width="148" height="44" rx="10" fill="rgba(7,133,183,0.08)" stroke="#0785B7" stroke-width="1.5"/>
+      <text x="84" y="449" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" font-weight="600" fill="white">🎥 Zoom / Google Meet</text>
+      <text x="84" y="464" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10" fill="rgba(255,255,255,0.55)">Teams · Webex · Any call</text>
+
+      <!-- OUTPUT label -->
+      <text x="775" y="280" font-family="DM Sans, sans-serif" font-size="10" fill="#FF000A" font-weight="700" letter-spacing="1.5" opacity="0.7">ACTIONS FIRING</text>
+
+      <!-- ─── ANIMATED INPUT DOTS ─── -->
+      <circle r="5" fill="#0785B7" filter="url(#dotGlow)">
+        <animateMotion dur="2.8s" repeatCount="indefinite" begin="0s"><mpath href="#p1"/></animateMotion>
+      </circle>
+      <circle r="3.5" fill="#92C2D2" filter="url(#dotGlow)" opacity="0.8">
+        <animateMotion dur="2.8s" repeatCount="indefinite" begin="1.4s"><mpath href="#p1"/></animateMotion>
+      </circle>
+      <circle r="5" fill="#0785B7" filter="url(#dotGlow)">
+        <animateMotion dur="3.2s" repeatCount="indefinite" begin="0.4s"><mpath href="#p2"/></animateMotion>
+      </circle>
+      <circle r="3.5" fill="#0785B7" filter="url(#dotGlow)" opacity="0.7">
+        <animateMotion dur="3.2s" repeatCount="indefinite" begin="2s"><mpath href="#p2"/></animateMotion>
+      </circle>
+      <circle r="5" fill="#92C2D2" filter="url(#dotGlow)">
+        <animateMotion dur="2.5s" repeatCount="indefinite" begin="0.8s"><mpath href="#p3"/></animateMotion>
+      </circle>
+      <circle r="5" fill="#0785B7" filter="url(#dotGlow)">
+        <animateMotion dur="2s" repeatCount="indefinite" begin="0.2s"><mpath href="#p4"/></animateMotion>
+      </circle>
+      <circle r="3.5" fill="#0785B7" filter="url(#dotGlow)" opacity="0.7">
+        <animateMotion dur="2s" repeatCount="indefinite" begin="1s"><mpath href="#p4"/></animateMotion>
+      </circle>
+      <circle r="5" fill="#92C2D2" filter="url(#dotGlow)">
+        <animateMotion dur="3s" repeatCount="indefinite" begin="1.2s"><mpath href="#p5"/></animateMotion>
+      </circle>
+      <circle r="5" fill="#0785B7" filter="url(#dotGlow)">
+        <animateMotion dur="2.6s" repeatCount="indefinite" begin="0.6s"><mpath href="#p6"/></animateMotion>
+      </circle>
+      <circle r="3.5" fill="#0785B7" filter="url(#dotGlow)" opacity="0.7">
+        <animateMotion dur="2.6s" repeatCount="indefinite" begin="1.8s"><mpath href="#p6"/></animateMotion>
+      </circle>
+
+      <!-- ─── ANIMATED OUTPUT DOTS (rapid fire — actions firing) ─── -->
+      <circle r="5" fill="#FF000A" filter="url(#dotGlow)">
+        <animateMotion dur="0.9s" repeatCount="indefinite" begin="0s"><mpath href="#q1"/></animateMotion>
+      </circle>
+      <circle r="3.5" fill="#FF000A" filter="url(#dotGlow)" opacity="0.7">
+        <animateMotion dur="0.9s" repeatCount="indefinite" begin="0.45s"><mpath href="#q1"/></animateMotion>
+      </circle>
+      <circle r="5" fill="#852FF4" filter="url(#dotGlow)">
+        <animateMotion dur="1.1s" repeatCount="indefinite" begin="0.2s"><mpath href="#q2"/></animateMotion>
+      </circle>
+      <circle r="3.5" fill="#852FF4" filter="url(#dotGlow)" opacity="0.7">
+        <animateMotion dur="1.1s" repeatCount="indefinite" begin="0.8s"><mpath href="#q2"/></animateMotion>
+      </circle>
+      <circle r="5" fill="#FF000A" filter="url(#dotGlow)">
+        <animateMotion dur="0.8s" repeatCount="indefinite" begin="0.1s"><mpath href="#q3"/></animateMotion>
+      </circle>
+      <circle r="3.5" fill="#FF000A" filter="url(#dotGlow)" opacity="0.7">
+        <animateMotion dur="0.8s" repeatCount="indefinite" begin="0.55s"><mpath href="#q3"/></animateMotion>
+      </circle>
+      <circle r="5" fill="#852FF4" filter="url(#dotGlow)">
+        <animateMotion dur="1.0s" repeatCount="indefinite" begin="0.3s"><mpath href="#q4"/></animateMotion>
+      </circle>
+      <circle r="3.5" fill="#852FF4" filter="url(#dotGlow)" opacity="0.7">
+        <animateMotion dur="1.0s" repeatCount="indefinite" begin="0.75s"><mpath href="#q4"/></animateMotion>
+      </circle>
+      <circle r="5" fill="#FF000A" filter="url(#dotGlow)">
+        <animateMotion dur="0.95s" repeatCount="indefinite" begin="0.4s"><mpath href="#q5"/></animateMotion>
+      </circle>
+      <circle r="3.5" fill="#FF000A" filter="url(#dotGlow)" opacity="0.7">
+        <animateMotion dur="0.95s" repeatCount="indefinite" begin="0.85s"><mpath href="#q5"/></animateMotion>
+      </circle>
+    </svg>
+
+    <!-- TASK BURST ZONE — 50 actions firing out of brain, slow stack & fade -->
+    <div class="task-burst-zone">
+      <div class="t-pill r" style="left:1%;top:5%;--d:7s;--dl:0s">✅ Follow-up sent: Miller</div>
+      <div class="t-pill c" style="left:33%;top:2%;--d:6s;--dl:2.5s">📧 Email drafted: Sarah J.</div>
+      <div class="t-pill p" style="left:60%;top:7%;--d:9s;--dl:4s">💬 Slack: Team notified</div>
+      <div class="t-pill r" style="left:20%;top:8%;--d:6.5s;--dl:5s">✅ Contract signed</div>
+      <div class="t-pill c" style="left:50%;top:3%;--d:5s;--dl:3s">📈 ROI: +18% this week</div>
+      <div class="t-pill p" style="left:80%;top:10%;--d:8s;--dl:1s">🎯 Retargeting active</div>
+      <div class="t-pill r" style="left:10%;top:14%;--d:5.5s;--dl:1.5s">📱 Text confirmed: John</div>
+      <div class="t-pill c" style="left:42%;top:12%;--d:8.5s;--dl:4.5s">📊 Analytics pulled</div>
+      <div class="t-pill p" style="left:70%;top:18%;--d:5s;--dl:2s">🎯 Google Ad optimized</div>
+      <div class="t-pill r" style="left:3%;top:24%;--d:10s;--dl:0.5s">🌐 Landing page live</div>
+      <div class="t-pill c" style="left:28%;top:22%;--d:6.5s;--dl:3.5s">📝 Post scheduled: Tue</div>
+      <div class="t-pill p" style="left:55%;top:26%;--d:6s;--dl:1s">📞 Call logged: Davis</div>
+      <div class="t-pill r" style="left:79%;top:22%;--d:7.5s;--dl:4s">🔔 Reminder set: 3pm</div>
+      <div class="t-pill r" style="left:20%;top:28%;--d:6s;--dl:2s">📤 Deck sent: Prospect</div>
+      <div class="t-pill c" style="left:14%;top:33%;--d:5s;--dl:3s">💡 Lead scored: 94</div>
+      <div class="t-pill p" style="left:40%;top:31%;--d:9.5s;--dl:0s">🗓️ Meeting booked</div>
+      <div class="t-pill r" style="left:65%;top:36%;--d:6.5s;--dl:4.5s">📈 Report generated</div>
+      <div class="t-pill p" style="left:85%;top:32%;--d:7s;--dl:1.5s">📱 Appt reminder: 9am</div>
+      <div class="t-pill r" style="left:4%;top:42%;--d:6s;--dl:3.5s">✅ Invoice sent: $2,400</div>
+      <div class="t-pill c" style="left:32%;top:44%;--d:8s;--dl:0s">📣 Review requested</div>
+      <div class="t-pill p" style="left:58%;top:40%;--d:5.5s;--dl:2.5s">🛠️ Ticket #429 closed</div>
+      <div class="t-pill r" style="left:80%;top:45%;--d:7s;--dl:1s">🔗 CRM updated</div>
+      <div class="t-pill p" style="left:5%;top:50%;--d:5s;--dl:2s">✅ Lead: moved to close</div>
+      <div class="t-pill c" style="left:51%;top:47%;--d:7s;--dl:4s">🗓️ Follow-up: Thu 2pm</div>
+      <div class="t-pill c" style="left:17%;top:52%;--d:6.5s;--dl:3s">📤 Proposal sent</div>
+      <div class="t-pill p" style="left:44%;top:54%;--d:5s;--dl:1.5s">💬 Response: @client</div>
+      <div class="t-pill r" style="left:72%;top:50%;--d:9s;--dl:4.5s">🌟 5-star reply sent</div>
+      <div class="t-pill c" style="left:1%;top:61%;--d:6s;--dl:0.5s">✅ Task: SEO audit done</div>
+      <div class="t-pill p" style="left:30%;top:63%;--d:7.5s;--dl:2.5s">📱 SMS blast sent</div>
+      <div class="t-pill r" style="left:57%;top:59%;--d:5.5s;--dl:5s">🎤 Voicemail transcribed</div>
+      <div class="t-pill c" style="left:79%;top:64%;--d:10s;--dl:1.5s">📊 Weekly KPI report</div>
+      <div class="t-pill r" style="left:42%;top:58%;--d:9s;--dl:0s">🔗 Zapier triggered</div>
+      <div class="t-pill p" style="left:9%;top:72%;--d:6.5s;--dl:3.5s">🔄 Workflow triggered</div>
+      <div class="t-pill r" style="left:37%;top:70%;--d:6s;--dl:2s">📧 Newsletter sent</div>
+      <div class="t-pill c" style="left:64%;top:74%;--d:7s;--dl:1s">🎯 Ad creative A/B'd</div>
+      <div class="t-pill c" style="left:25%;top:68%;--d:5s;--dl:4s">📊 Ads spend: $847</div>
+      <div class="t-pill p" style="left:70%;top:68%;--d:6.5s;--dl:2s">💬 Chat replied: web</div>
+      <div class="t-pill p" style="left:2%;top:81%;--d:8.5s;--dl:3s">💰 Payment confirmed</div>
+      <div class="t-pill r" style="left:24%;top:79%;--d:5s;--dl:0.5s">✅ Onboarding: step 2</div>
+      <div class="t-pill c" style="left:51%;top:83%;--d:6.5s;--dl:4s">📞 Callback scheduled</div>
+      <div class="t-pill p" style="left:77%;top:80%;--d:5s;--dl:2.5s">🌐 Google ranking checked</div>
+      <div class="t-pill r" style="left:13%;top:76%;--d:7.5s;--dl:3.5s">📧 Re-engagement sent</div>
+      <div class="t-pill c" style="left:46%;top:77%;--d:6s;--dl:1s">🌟 Testimonial captured</div>
+      <div class="t-pill p" style="left:85%;top:56%;--d:5.5s;--dl:3s">✅ Blog published</div>
+      <div class="t-pill r" style="left:7%;top:90%;--d:7.5s;--dl:1.5s">🔔 Client alert sent</div>
+      <div class="t-pill c" style="left:34%;top:88%;--d:9.5s;--dl:4.5s">📝 Notes: Johnson call</div>
+      <div class="t-pill p" style="left:62%;top:92%;--d:6s;--dl:1s">💬 Slack: #marketing</div>
+      <div class="t-pill r" style="left:50%;top:96%;--d:6.5s;--dl:0s">📊 Dashboard refreshed</div>
+      <div class="t-pill c" style="left:85%;top:88%;--d:8s;--dl:2.5s">🎤 Meeting summary sent</div>
+      <div class="t-pill p" style="left:86%;top:76%;--d:5s;--dl:4.5s">🔄 CRM stage updated</div>
+      <div class="t-pill r" style="left:83%;top:96%;--d:7s;--dl:2s">📊 Analytics: 847 views</div>
+    </div>
+  </div>
+</section>
+
+<!-- CHANNEL CARDS — how every input connects to the brain -->
+<section class="channels-section">
+  <div class="channels-inner">
+    <div class="section-label channels-label">How It Listens</div>
+    <h2 class="channels-headline">Every Way You Communicate.<br><span>Captured. Understood. Acted On.</span></h2>
+    <p class="channels-sub">It doesn't matter how your team works or how your clients reach you. Every channel flows into MISTR's brain — and actions fire automatically, better than any human could do it manually.</p>
+    <div class="channels-grid">
+
+      <!-- Phone Calls -->
+      <div class="ch-card">
+        <div class="ch-card-top teal"></div>
+        <span class="ch-icon">📞</span>
+        <div class="ch-title">Phone Calls</div>
+        <p class="ch-body">Every call your team makes or takes — automatically transcribed, summarized, and turned into action. Client mentioned a problem? Task created. Follow-up needed? Done. No one enters a single note.</p>
+        <div class="ch-tags">
+          <span class="ch-tag">Auto-transcribed</span>
+          <span class="ch-tag">Tasks created</span>
+          <span class="ch-tag">CRM updated</span>
+        </div>
+      </div>
+
+      <!-- Slack / Chat -->
+      <div class="ch-card">
+        <div class="ch-card-top purple"></div>
+        <span class="ch-icon">💬</span>
+        <div class="ch-title">Slack & Team Chat</div>
+        <p class="ch-body">Every channel, every DM, every thread. MISTR reads your Slack like the most attentive team member — picks up decisions, action items, and requests, then executes without anyone having to repeat themselves.</p>
+        <div class="ch-tags">
+          <span class="ch-tag">Action items extracted</span>
+          <span class="ch-tag">Auto-routed</span>
+          <span class="ch-tag">Responds for you</span>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="ch-card">
+        <div class="ch-card-top red"></div>
+        <span class="ch-icon">📧</span>
+        <div class="ch-title">Email</div>
+        <p class="ch-body">Every inbox, every thread. MISTR monitors all your email 24/7 — drafting responses, flagging urgencies, creating follow-up tasks, and keeping every client relationship moving while you sleep.</p>
+        <div class="ch-tags">
+          <span class="ch-tag">Responses drafted</span>
+          <span class="ch-tag">Urgencies flagged</span>
+          <span class="ch-tag">24/7 monitoring</span>
+        </div>
+      </div>
+
+      <!-- SMS / Text -->
+      <div class="ch-card">
+        <div class="ch-card-top teal"></div>
+        <span class="ch-icon">📱</span>
+        <div class="ch-title">SMS & Text</div>
+        <p class="ch-body">Client texts, team updates, vendor messages — every text that matters gets captured, routed to the right workflow, and replied to automatically. Nothing slips through because no one checked their phone.</p>
+        <div class="ch-tags">
+          <span class="ch-tag">Auto-replied</span>
+          <span class="ch-tag">Lead captured</span>
+          <span class="ch-tag">Workflow triggered</span>
+        </div>
+      </div>
+
+      <!-- Online Meetings -->
+      <div class="ch-card">
+        <div class="ch-card-top purple"></div>
+        <span class="ch-icon">🎥</span>
+        <div class="ch-title">Online Meetings</div>
+        <p class="ch-body">Zoom, Google Meet, Microsoft Teams, Webex — MISTR joins, transcribes, and extracts every action item. Tasks assigned. Summaries sent. Follow-ups scheduled. Your meetings actually produce results.</p>
+        <div class="ch-tags">
+          <span class="ch-tag">Zoom</span>
+          <span class="ch-tag">Google Meet</span>
+          <span class="ch-tag">Teams</span>
+          <span class="ch-tag">Summaries sent</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HEY MISTR — ASK ANYTHING -->
+<section class="ask-section">
+  <div class="section-inner">
+    <div class="section-label">Ask Anything</div>
+    <h2 class="section-headline">Hey MISTR — <span>Just Ask.</span></h2>
+    <p class="section-sub">MISTR is connected to everything — your ads, your CRM, your analytics, your inbox. Ask any business question in plain language and get an instant answer. No dashboards. No digging. No waiting.</p>
+    <div class="ask-demos">
+
+      <div class="ask-demo">
+        <div class="ask-q">Hey MISTR, how much am I paying per lead?</div>
+        <div class="ask-a">
+          <div class="ask-a-label">MISTR</div>
+          <div class="ask-a-text">According to Google Ads, you're paying <strong>$46 per lead</strong> — up $8 from last month. I just texted you the 90-day trend report. Your top campaign is "Summer HVAC" at $31/lead. Want me to shift more budget to it?</div>
+        </div>
+      </div>
+
+      <div class="ask-demo">
+        <div class="ask-q">What's my close rate this month?</div>
+        <div class="ask-a">
+          <div class="ask-a-label">MISTR</div>
+          <div class="ask-a-text">Your close rate is <strong>23%</strong> — down 4% from last month. I've flagged 3 leads untouched for 5+ days and assigned follow-ups to your team. Want me to send a check-in email to all open quotes today?</div>
+        </div>
+      </div>
+
+      <div class="ask-demo">
+        <div class="ask-q">Did anyone respond to the proposal I sent Friday?</div>
+        <div class="ask-a">
+          <div class="ask-a-label">MISTR</div>
+          <div class="ask-a-text">Yes — <strong>Miller's Auto Group</strong> replied at 9:14am. I've drafted a response and booked a call for Thursday at 2pm. I'll send the draft to your Slack for a quick review — approve it and I'll send.</div>
+        </div>
+      </div>
+
+    </div>
+    <p class="ask-note">Because MISTR is already connected to everything, every answer is one sentence away.</p>
+  </div>
+</section>
+
+<!-- NO LEARNING CURVE / MULTILINGUAL / MIND MAP STRIP -->
+<div class="no-learn-strip">
+  <div class="section-inner">
+    <div class="no-learn-header">
+      <div class="section-label">Built Different</div>
+      <h2>You Don't Need to Know AI.<br><span>Just Talk.</span></h2>
+      <p>The reason most people haven't adopted AI is simple: they can only think of what's already in their head. MISTR breaks that. Just say what's on your mind — and as MISTR handles more than you thought possible, your whole idea of what's possible changes.</p>
+    </div>
+    <div class="no-learn-grid">
+
+      <div class="no-learn-item">
+        <div class="no-learn-icon">🗣️</div>
+        <div>
+          <h4>No Prompts. No Training. Just Talk.</h4>
+          <p>Forget everything you thought you knew about AI. No learning curve. No tutorials. No figuring out the right words. Talk to MISTR like you'd talk to a person — and it handles the rest. As you talk, it will show you things you never thought to ask for.</p>
+        </div>
+      </div>
+
+      <div class="no-learn-item">
+        <div class="no-learn-icon">🌍</div>
+        <div>
+          <h4>Speaks Every Language. Automatically.</h4>
+          <p>MISTR is fully multilingual. Start in English, switch to Spanish mid-conversation — MISTR follows. Serve clients worldwide, manage international teams, and communicate without a translator or a second thought.</p>
+        </div>
+      </div>
+
+      <div class="no-learn-item">
+        <div class="no-learn-icon">🗺️</div>
+        <div>
+          <h4>Your Entire Business. Live. In One View.</h4>
+          <p>Every client gets a Live Business Mind Map — a self-updating visual of your entire operation. Every project, client, task, and relationship. Not a static diagram. A living, breathing map that updates itself in real time as your business moves.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- HOW MISTR WORKS -->
+<section class="how-section">
+  <div class="section-inner">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-headline">Say It. <span>Done.</span></h2>
+    <p class="section-sub">MISTR is always on — via voice, Slack, SMS, or on autopilot. However you communicate, MISTR captures, executes, and reports.</p>
+    <div class="how-tabs">
+      <button class="how-tab active">📞 Voice</button>
+      <button class="how-tab">💬 Slack</button>
+      <button class="how-tab">📱 SMS</button>
+      <button class="how-tab">🤖 Autopilot</button>
+    </div>
+    <div class="how-content">
+      <div class="how-text">
+        <h3>Call MISTR. Brain dump everything.</h3>
+        <p>Call (760) 334-6463 any time — day or night. Talk freely. MISTR captures every word, organizes it into action items, and executes without you having to lift another finger.</p>
+        <ul class="how-points">
+          <li>Every idea captured and organized automatically</li>
+          <li>Tasks created, assigned, and tracked in real-time</li>
+          <li>Follow-ups sent on your behalf without reminders</li>
+          <li>Weekly voice summary of everything that got done</li>
+        </ul>
+      </div>
+      <div class="how-mockup">
+        <div class="how-mockup-header">
+          <div class="how-dot red"></div>
+          <div class="how-dot yellow"></div>
+          <div class="how-dot green"></div>
+          <span class="how-mockup-label">MISTR Voice</span>
+        </div>
+        <div class="chat-bubble user">
+          "Hey MISTR — I need you to send a follow-up to the Miller account, check in on the website project, and remind me about the quarterly report on Friday."
+        </div>
+        <div class="chat-bubble mistr">
+          <div class="mistr-label">MISTR</div>
+          Got it. Three things done. Miller follow-up sent. Website project status requested from your team. Friday 9am reminder set for the quarterly report. Anything else?
+        </div>
+        <div>
+          <span class="task-pill">✅ Miller Follow-Up Sent</span>
+          <span class="task-pill">📋 Website Check Sent</span>
+          <span class="task-pill">⏰ Friday Reminder Set</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FEATURES GRID -->
+<section class="features-section">
+  <div class="section-inner">
+    <div class="section-label">Capabilities</div>
+    <h2 class="section-headline">One AI. <span>Every Role.</span></h2>
+    <p class="section-sub">Replace the team you can't afford. Keep the results you need.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📞</div>
+        <h4>Voice AI</h4>
+        <p>24/7 phone line. Call and talk. MISTR handles the rest automatically.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">✅</div>
+        <h4>Task & Project Management</h4>
+        <p>Every conversation becomes a tracked, assigned task. Nothing gets lost.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📧</div>
+        <h4>Email Monitoring</h4>
+        <p>MISTR watches every inbox, responds, escalates, and reports — automatically.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h4>SMS to Anyone</h4>
+        <p>Text clients, contractors, and vendors on your behalf. Instantly.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h4>PPC Campaign Agent</h4>
+        <p>Manages and optimizes your paid ads without you touching a dashboard.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📚</div>
+        <h4>Marketing SOPs</h4>
+        <p>Your playbooks, executed on schedule — without a single reminder from you.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎨</div>
+        <h4>Creative Director AI</h4>
+        <p>Copy, social content, and creative direction — all in your voice and brand.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👁️</div>
+        <h4>Image & Visual Analysis</h4>
+        <p>Analyze photos, ads, and products with AI vision. Instant intelligent insight.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📞</div>
+        <h4>Client Phone Numbers</h4>
+        <p>Dedicated numbers for every client relationship. MISTR handles every call.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h4>Self-Managing Website</h4>
+        <p>Your site updates itself — content refreshed, SEO optimized, performance monitored. Automatically.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <h4>Knowledge Base</h4>
+        <p>MISTR learns your business deeply and never forgets a single detail.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <h4>Reporting & Analytics</h4>
+        <p>Weekly reports, insights, and flagged issues — delivered automatically.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🗺️</div>
+        <h4>Live Business Mind Map</h4>
+        <p>A self-updating visual of your entire operation — every project, client, and task in real time.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h4>Fully Multilingual</h4>
+        <p>Talk to MISTR in any language. Switch mid-conversation. Serve global clients and teams without barriers.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h4>Ask Anything. Instantly.</h4>
+        <p>MISTR is wired into all your data — CRM, ads, analytics, inbox. Ask any question. Get an instant answer.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📞</div>
+        <h4>Dedicated Business Concierge</h4>
+        <p>Your own AI office manager on call 24/7. Call anytime, ask anything, get answers and action immediately.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h4>AI Company Team Chat</h4>
+        <p>Advanced AI-powered chat tied to your entire knowledge base. Keep every team member on the same page — no Slack required.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STORY SECTION -->
+<section class="story-section">
+  <div class="section-inner">
+    <div class="story-card">
+      <div class="section-label">The Origin</div>
+      <h2>Built by Someone Who Lost It All.</h2>
+      <p>The founder of MIndSTReam.ing lost $284,000. His health. His relationships. His sleep. Not because he wasn't smart — but because no system could keep up with his mind. He built MISTR because he needed it to survive. Now it exists so you don't have to go through what he did.</p>
+      <p style="font-size:17px; color: var(--gray-muted);">Like Slumdog Millionaire — every failure, every loss, every painful lesson became the exact answer key his clients needed. That's not baggage. That's the qualification.</p>
+      <div class="story-stat">
+        <div class="story-stat-item"><span class="n">$284K</span><span class="l">Lost before building the solution</span></div>
+        <div class="story-stat-item"><span class="n">5 Years</span><span class="l">Of trial, error, and rebuilding</span></div>
+        <div class="story-stat-item"><span class="n">1 Mission</span><span class="l">So you never face what he faced</span></div>
+      </div>
+      <br>
+      <a href="#" class="story-cta">Read the Full Story →</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- INTEGRATIONS PREVIEW -->
+<section class="integrations-section">
+  <div class="section-inner">
+    <div class="section-label">Integrations</div>
+    <h2 class="section-headline">MISTR Connects to <span>Your Entire World.</span></h2>
+    <p class="section-sub">The more you connect, the smarter MISTR gets. Plug in what you already use — no migration needed.</p>
+    <div class="integrations-grid">
+      <div class="integration-tile"><div class="logo">💬</div> Slack</div>
+      <div class="integration-tile"><div class="logo">📧</div> Gmail</div>
+      <div class="integration-tile"><div class="logo">📅</div> Google Calendar</div>
+      <div class="integration-tile"><div class="logo">📁</div> Google Drive</div>
+      <div class="integration-tile"><div class="logo">📊</div> Google Analytics</div>
+      <div class="integration-tile"><div class="logo">🏢</div> GoHighLevel</div>
+      <div class="integration-tile"><div class="logo">🔵</div> HubSpot</div>
+      <div class="integration-tile"><div class="logo">👥</div> Salesforce</div>
+      <div class="integration-tile"><div class="logo">📘</div> Facebook</div>
+      <div class="integration-tile"><div class="logo">📸</div> Instagram</div>
+      <div class="integration-tile"><div class="logo">💼</div> LinkedIn</div>
+      <div class="integration-tile"><div class="logo">🎵</div> TikTok</div>
+      <div class="integration-tile"><div class="logo">▶️</div> YouTube</div>
+      <div class="integration-tile"><div class="logo">🛒</div> Shopify</div>
+      <div class="integration-tile"><div class="logo">💰</div> QuickBooks</div>
+      <div class="integration-tile"><div class="logo">💳</div> Stripe</div>
+      <div class="integration-tile"><div class="logo">📝</div> Notion</div>
+      <div class="integration-tile"><div class="logo">⚡</div> Zapier</div>
+      <div class="more-badge">+80 More Integrations →</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRICING -->
+<section class="pricing-section">
+  <div class="section-inner">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-headline">Less Than <span>Two Employees.</span><br>More Than an Entire Company.</h2>
+    <p class="section-sub">MISTR connects to what you already use — or we give you the full business ecosystem. Either way, it costs less than 2 people at $15/hour.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card old-way">
+        <span class="price-badge red">❌ The Old Way</span>
+        <h3>Human Team</h3>
+        <div class="pricing-price">$38K</div>
+        <div class="pricing-period">/month — and you still manage them</div>
+        <ul class="pricing-features">
+          <li>COO — $15,000/mo</li>
+          <li>Executive Assistant — $5,000/mo</li>
+          <li>Project Manager — $8,000/mo</li>
+          <li>Marketing Director — $10,000/mo</li>
+          <li>Still need to manage all of them</li>
+          <li>Sick days, turnover, drama</li>
+        </ul>
+        <button class="pricing-btn">Not This</button>
+      </div>
+      <div class="pricing-card pro">
+        <span class="price-badge teal">⭐ Most Popular</span>
+        <h3>MISTR Pro</h3>
+        <div class="pricing-price" style="color:var(--teal)">$997</div>
+        <div class="pricing-period">/month — everything included</div>
+        <ul class="pricing-features">
+          <li>Voice AI (24/7 phone line)</li>
+          <li>Slack + SMS integration</li>
+          <li>Full task & project management</li>
+          <li>Email monitoring & responses</li>
+          <li>PPC Campaign Agent</li>
+          <li>Creative Director AI</li>
+          <li>Client phone numbers</li>
+          <li>Weekly reporting & analytics</li>
+        </ul>
+        <button class="pricing-btn">Book a Strategy Call →</button>
+      </div>
+      <div class="pricing-card ecosystem">
+        <span class="price-badge" style="background:var(--red);color:white;">🔥 Full Ecosystem</span>
+        <h3>Business Complete</h3>
+        <div class="pricing-price" style="color:var(--red)">$4,995</div>
+        <div class="pricing-period">/month — less than 2 employees at $15/hr</div>
+        <ul class="pricing-features">
+          <li>Everything in Pro</li>
+          <li>CRM built & managed for you</li>
+          <li>Website built & maintained</li>
+          <li>Social media content & posting</li>
+          <li>PPC ads — managed & optimized</li>
+          <li>Google Analytics & reporting</li>
+          <li>Project management system</li>
+          <li>Full business ops — done for you</li>
+        </ul>
+        <button class="pricing-btn" style="background:var(--red);color:white;box-shadow:0 4px 20px rgba(255,0,10,0.4);">Get the Full Ecosystem →</button>
+      </div>
+      <div class="pricing-card agency">
+        <span class="price-badge purple">🚀 Agency</span>
+        <h3>MISTR Agency</h3>
+        <div class="pricing-price" style="color:var(--purple)">Custom</div>
+        <div class="pricing-period">/month — white-label for your clients</div>
+        <ul class="pricing-features">
+          <li>Everything in Pro</li>
+          <li>White-label MISTR for clients</li>
+          <li>Become the AI ops company</li>
+          <li>Revenue share model available</li>
+          <li>Dedicated onboarding team</li>
+          <li>Priority support & SLA</li>
+        </ul>
+        <button class="pricing-btn" style="background:var(--purple);color:white;">Let's Talk →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <div class="wave-bg"></div>
+  <h2>Ready to get your <span>life back?</span></h2>
+  <p>MIndSTReam.ing — Your business, running itself.</p>
+  <a href="#" class="btn-primary">Talk to MISTR Now →</a>
+  <p class="final-note">No contracts. No setup fees. Strategy call included.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="nav-wordmark">M<span style="color:var(--teal)">I</span>nd<span style="color:var(--teal)">STR</span>eam.ing</span>
+      <p>Because you deserve a business that runs itself. Built by a founder who lost everything learning how.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <a href="#">Features</a>
+      <a href="#">Integrations</a>
+      <a href="#">Pricing</a>
+      <a href="#">How It Works</a>
+    </div>
+    <div class="footer-col">
+      <h4>Industries</h4>
+      <a href="#">Marketing Agencies</a>
+      <a href="#">Home Services</a>
+      <a href="#">Law Firms</a>
+      <a href="#">Real Estate</a>
+      <a href="#">+ 8 More</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="#">Talk to MISTR</a>
+      <a href="#">Book a Call</a>
+      <a href="#">About</a>
+      <a href="#">Blog</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Ad ROI LLC · All rights reserved</p>
+    <div>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
